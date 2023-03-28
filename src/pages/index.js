@@ -16,6 +16,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
+          <h1 className='text-1xl'>Hello World</h1>
+          <button className='btn btn-primary'>I'm a button</button>
+          {/* <button className='btn'>I'm a Button</button> */}
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>src/pages/index.js</code>
@@ -80,7 +83,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className={inter.className}>
+            <h2 className="text-2xl">
               Learn <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
