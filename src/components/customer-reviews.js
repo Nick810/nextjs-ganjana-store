@@ -57,14 +57,14 @@ export default function CustomerReviews() {
                 </ul>
                 <p className="max-w-xs text-primary">{ item.review.substring(0, 420) + '...' }</p>
 
-                <div className="flex flex-col items-center mt-6">
-                  <button className="flex justify-end text-primary font-bold">
+                <div className="flex flex-col items-center mt-6 mb-4">
+                  <button className="flex justify-center text-primary items-center font-bold border px-4 py-2">
                     See full review
-                    <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1"/>
+                    <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1 translate-y-1"/>
                   </button>
                 </div>
                 <div>
-                  <img src={'../images/google_g_icon.png'} alt="" style={{ maxWidth: '24px', display: 'block', margin: 'auto', width: '100%' }} />
+                  <Image src={ GoogleIcon } width={ 32 } priority alt="" style={{ margin: 'auto'}} />
                 </div>
               </a>
             </li>

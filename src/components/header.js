@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <>
-      <header style={{ background: '#000', position: 'fixed', top: '0', left: '0', width: '100vw', zIndex: '2000' }} className="main__layout shadow-xl">
+      <header style={{ background: '#000', position: 'fixed', top: '0', left: '0', width: '100vw', zIndex: '2000' }} className="main__layout shadow-md">
         <div className="flex justify-between pt-3 pb-3">
           <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
             <img src='https://www.datocms-assets.com/95279/1678549877-ganjana_logo_only.png' style={{ width: '40px', height: '40px' }} alt="" />

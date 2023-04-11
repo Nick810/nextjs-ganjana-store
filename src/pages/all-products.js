@@ -25,7 +25,7 @@ export default function AllProducts({ data }) {
           <Link href={ `/product/${ item.slug }` } className='relative'>
             {
               item.image ? 
-              <div className='h-auto overflow-hidden'><Image src={{ ...item.image.responsiveImage }} priority alt="" className='min-h-48'/></div> : null
+              <div className='overflow-hidden' style={{ height: '210px' }}><Image src={{ ...item.image.responsiveImage }} priority alt="" className='min-h-48'/></div> : null
             }
             <p>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
             <p style={{ fontSize: '.75rem !important', mb: 0, color: item.availability ? 'green' : 'red' }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
@@ -79,18 +79,18 @@ export default function AllProducts({ data }) {
   }
 
   return (
-    <>
-    <div className='main__layout'>
-      <div className='flex justify-between'>
-        <h1 className='text-4xl mb-4 text-primary font-bold'>All Products</h1>
-        <button onClick={ setShowFilter }>Filter</button>
+    <div className='pt-8 pb-8'>
+      <div className='main__layout'>
+        <div className='flex justify-between'>
+          <h1 className='text-4xl mb-4 text-primary font-bold'>All Products</h1>
+          <button className='btn bg-primary' onClick={ setShowFilter }>Filter</button>
+        </div>
+        <ul className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+          { renderProducts() }
+        </ul>
       </div>
-      <ul className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-        { renderProducts() }
-      </ul>
+      <Filter growers={ allGrowers } />
     </div>
-    <Filter growers={ allGrowers } />
-    </>
   )
 }
 

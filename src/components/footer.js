@@ -9,7 +9,7 @@ import instagram from '../svgs/instagram.svg';
 
 export default function Footer() {
   return (
-    <footer className="footer footer-center bg-primary text-base-content main__layout pt-4 pb-4">
+    <footer className="footer footer-center bg-primary text-base-content main__layout" style={{ paddingTop: '2rem', paddingBottom: '2rem'}}>
       {/* <div className='divider'></div> */}
       <ul className='flex flex-col gap-3'>
         {

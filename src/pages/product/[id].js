@@ -1,5 +1,8 @@
 import { request } from '../../../lib/datocms';
 import Image from 'next/image';
+import Basket from '../../svgs/basket.svg';
+import Line from '../../images/line.png';
+import Messenger from '../../svgs/facebook-messenger.svg';
 import Video from '@/components/video-clip';
 import shortid from 'shortid';
 
@@ -9,9 +12,11 @@ const Product = ({ data }) => {
   const { availableSizes, buyingOptions, cannabiniod, cultivatedBy, feeling, flavor, strainType } = otherProps
   
   return (
-    <div>
-      <h1>{ name }</h1>
-      <p>{ description }</p>
+    <div className='pt-8 pb-8'>
+      <div className='text-center'>
+        <h1 className='text-primary font-bold text-3xl mb-2'>{ name }</h1>
+        <p className='text-primary'>{ description }</p>
+      </div>
       {/* { 
         <Video 
           videoSrcURL={ `https://player.vimeo.com/video/${ productData.video.url.match(/\d+/g) }` }
@@ -20,13 +25,13 @@ const Product = ({ data }) => {
       } */}
       <div style={{ padding: '0 5%' }}>
         <div>
-          <p>{ strainType } | THC:{ cannabiniod.thc }%</p>
+          <p className='text-primary'>{ strainType } | THC:{ cannabiniod.thc }%</p>
         </div>
-          <div style={{ paddingBottom: '24px' }}>
-            <h3>Cultivated by</h3>
+          <div>
+            <h3 className='text-primary font-bold mb-2'>Cultivated by</h3>
             {
               cultivatedBy ? 
-              <div style={{ display: 'flex', flexDirection: 'row', gap: '8px', marginTop: '4px' }}>
+              <div className="flex gap-4">
                 { cultivatedBy.map(item => (
                   <Image src={ item } alt="" key={ shortid.generate() } height={ 48 } width={ 48 } />
                 ))}
@@ -35,13 +40,13 @@ const Product = ({ data }) => {
           </div>
           { flavor.length || flavor ? 
             <>
-              <div style={{ paddingBottom: '24px' }}>
-                {/* <Divider sx={{ borderColor: '#e3e3e3', mb: 3 }} /> */}
-                <h3>Flavor</h3>
-                <ul style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+              <div>
+                <div className='divider'></div>
+                <h3 className='text-primary font-bold mb-2'>Flavor</h3>
+                <ul className='flex gap-4'>
                   {
                     flavor.map(item => (
-                      <li key={ shortid.generate() } style={{ borderRadius: '16px', color: '#7D7D7D' }}>
+                      <li key={ shortid.generate() } className='text-primary border p-2'>
                         { item }
                       </li>
                     ))
@@ -52,13 +57,13 @@ const Product = ({ data }) => {
           }
           { feeling.length || feeling ? 
             <>
-              <div style={{ paddingBottom: '24px' }}>
-                {/* <Divider sx={{ borderColor: '#e3e3e3', mb: 3 }} /> */}
-                <h3>Feeling</h3>
-                <ul style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+              <div>
+                <div className='divider'></div>
+                <h3 className='text-primary font-bold mb-2'>Feeling</h3>
+                <ul className='flex gap-4'>
                   {
                     feeling.map(item => (
-                      <li key={ shortid.generate() } style={{ color: '#7D7D7D' }}>
+                      <li key={ shortid.generate() } className='text-primary border p-2'>
                         { item }
                       </li>
                     ))
@@ -68,35 +73,50 @@ const Product = ({ data }) => {
             </> : null 
           }
           <div style={{ marginBottom: '24px' }}>
-            {/* <Divider sx={{ borderColor: '#e3e3e3', mb: 3 }} /> */}
-            <h3>Available Sizes</h3>
+            <div className='divider'></div>
+            <h3 className='text-primary font-bold mb-2'>Available Sizes</h3>
             <ul style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
               {
                 Object.entries(availableSizes).map(item => (
-                  <li key={ shortid.generate() } style={{ padding: '8px 12px', borderBottom: '1px solid black', fontWeight: 700 }}>{ `${ item[0] }g - ฿${ item[1].toLocaleString() }` }</li>
+                  <li key={ shortid.generate() } className='border pt-2 pb-2 pl-3 pr-3 text-primary'>{ `${ item[0] }g - ฿${ item[1].toLocaleString() }` }</li>
                 ))
               }
             </ul>
           </div>
-          <p>*Select your desired size after adding item to cart</p>
-          <button 
-            className={ `snipcart-add-item ${ availability ? '' : 'sold-out' }` }
-            style={{ border: '1px solid black', background: 'white', color: 'black', width: '100%', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-            data-item-id={ name.replaceAll(' ', '-').toLowerCase() }
-            data-item-price={ price }
-            data-item-description={ description }
-            // data-item-image={ image.url }
-            data-item-url={ `/${ name.replaceAll(' ', '_').toLowerCase() }` }
-            data-item-name={ name }
-            data-item-custom1-name="Size"
-            data-item-custom1-options={ buyingOptions }
-            >
-              { availability ? `Add to cart` : `Sold out` }
-              {/* <div style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '2px' }}><Basket/></div> */}
-          </button>
-          <div style={{ display: 'flex', flexDirection: 'row', marginTop: '16px', gap: '16px' }}>
-            {/* <a href="https://lin.ee/Nc0eINQ" style={{ border: '1px solid black', width: '100%', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontWeight: 700 }} className="link--dark"><img src={ Line } style={{ width: '24px', height: '24px'}} />Buy on Line</a>
-            <a href="http://m.me/ganjanacup" style={{ border: '1px solid black', width: '100%', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',  fontWeight: 700 }} className="link--dark"><Messenger />Buy on Messenger</a> */}
+          <p className='text-primary mb-2'>*Select your desired size after adding item to cart</p>
+          <div className='flex flex-col gap-4'>
+            <button 
+              className={ `snipcart-add-item ${ availability ? '' : 'sold-out' } text-primary-content bg-primary flex justify-center gap-2 pt-3 pb-3 pl-6 pr-6` }
+              // style={{ border: '1px solid black', background: 'white', color: 'black', width: '100%', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+              data-item-id={ name.replaceAll(' ', '-').toLowerCase() }
+              data-item-price={ price }
+              data-item-description={ description }
+              // data-item-image={ image.url }
+              data-item-url={ `/${ name.replaceAll(' ', '_').toLowerCase() }` }
+              data-item-name={ name }
+              data-item-custom1-name="Size"
+              data-item-custom1-options={ buyingOptions }
+              >
+                { availability ? `Add to cart` : `Sold out` }
+                <Image src={ Basket } priority alt="" />
+                {/* <div style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '2px' }}><Basket/></div> */}
+            </button>
+            <div className="flex gap-4">
+              <a 
+                href="https://lin.ee/Nc0eINQ" 
+                className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold"
+                style={{ width: '100%' }}>
+                  <Image src={ Line } width={ 24 } priority alt="" />
+                  Buy on Line
+              </a>
+              <a 
+                href="http://m.me/ganjanacup"
+                className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold"
+                style={{ width: '100%' }}>
+                  <Image src={ Messenger } priority alt="" />
+                  Buy on Messenger
+              </a>
+            </div>
           </div>
         </div>
     </div>

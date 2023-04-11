@@ -47,7 +47,7 @@ export default function AllCategories() {
     <section style={{ paddingLeft: '5%' }} className='mb-4 mt-4'>
       <div>
         <h2 className="text-4xl mb-4  text-primary font-bold">All Categories</h2>
-        <ul className="carousel rounded-box gap-3">
+        <ul className="carousel rounded-box gap-0">
           {
             data ? 
               data.map((item, index) => (

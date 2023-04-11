@@ -15,7 +15,7 @@ export default function AllProducts() {
       try {
         const ALLPRODUCTS_QUERY = `
           query AllProducts($limit: IntType) {
-            allProducts(first: $limit) {
+            allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}}, first: $limit) {
               availability
               name
               image {
@@ -61,21 +61,23 @@ export default function AllProducts() {
   return (
     <section className='main__layout mb-4 mt-4'>
       <div className='flex justify-between items-center'>
-        <h2 className="text-4xl mb-4 text-primary font-bold">All Flowers</h2>
+        <h2 className="text-4xl text-primary font-bold">All Flowers</h2>
         <Link href="/all-products" className="flex justify-end text-primary font-bold">
           see all products
           <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1"/>
         </Link>
       </div>
-      <ul className='carousel gap-8'>
+      <ul className='carousel gap-4 pt-4'>
         {
           data ? data.allProducts.map((item, index) => {
             const { cannabiniod, buyingOptions, strainType } = item.otherProps;
 
             return (
-              <li key={ shortid.generate() } style={{ marginTop: index % 2 !== 0 ? '32px' : '0px'}} className="carousel-item">
-                <Link href={`product/${ item.slug }`} style={{ position: 'relative', transform: `translateY(${ (index * 10) + 16 }px)` }}>
-                  { item.image ? <div style={{ maxWidth: '240px', maxHeight: '240px' }}><Image src={{ ...item.image.responsiveImage }} alt="" priority /></div> : null }
+              // <li key={ shortid.generate() } style={{ marginTop: index % 2 !== 0 ? '32px' : '0px'}} className="carousel-item">
+              <li key={ shortid.generate() } className="carousel-item">
+                {/* <Link href={`product/${ item.slug }`} className='relative' style={{ transform: `translateY(${ (index * 10) + 16 }px)` }}> */}
+                <Link href={`product/${ item.slug }`} className='relative' >
+                  { item.image ? <div className='overflow-hidden' style={{ maxWidth: '160px', maxHeight: '160px' }}><Image src={{ ...item.image.responsiveImage }} alt="" priority /></div> : null }
                   <div>
                     <p style={{ fontSize: '.75rem !important', mb: 0, color: item.availability ? 'green' : 'red' }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
                     <p>{ strainType } | THC: { cannabiniod.thc }%</p>
