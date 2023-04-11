@@ -12,12 +12,12 @@ const Product = ({ data }) => {
     <div>
       <h1>{ name }</h1>
       <p>{ description }</p>
-      { 
+      {/* { 
         <Video 
           videoSrcURL={ `https://player.vimeo.com/video/${ productData.video.url.match(/\d+/g) }` }
           videoTitle={ productData.video.title }
         /> ?? video
-      }
+      } */}
       <div style={{ padding: '0 5%' }}>
         <div>
           <p>{ strainType } | THC:{ cannabiniod.thc }%</p>

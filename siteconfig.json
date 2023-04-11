@@ -1,0 +1,42 @@
+{
+  "navigationMenu": [
+    {
+      "title": "Home",
+      "path": "/"
+    },
+    {
+      "title": "All Products",
+      "path": "/all-products"
+    },
+    {
+      "title": "Contact Us",
+      "path": "/contact-us"
+    }
+  ],
+  "googleReviews": [
+    {
+      "name": "Taylor",
+      "stars": 5,
+      "review": "The best dispensary in Bangkok. This cannabis store is owned by several of the best (& arguably most famous) Thai growers who grow and sell all of their own weed. It’s worth a drive out of the city to check out. And it’s the perfect dispensary to stock up at for your vacation in Thailand. You won’t find a better selection of weed anywhere else in the country, especially not at their prices. Because they grow and sell their own weed (the same weed that other shops sell for over 1000 baht per gram), they are more competitive price wise than anywhere else you’ll find similar quality of weed, there is no middle man getting a cut here at all.",
+      "link": "https://goo.gl/maps/C6UYwTLxQPmVkza77"
+    },
+    {
+      "name": "keegan k",
+      "stars": 5,
+      "review": "Best dispensary in Bangkok!! Amazing weed and you get to buy it directly from the grower!!",
+      "link": "https://goo.gl/maps/wJisvnUFxmnejVG3A"
+    },
+    {
+      "name": "real real",
+      "stars": 5,
+      "review": "This shop got the Best quality in Bangkok. Real smokers shop, real boyz in da hood.",
+      "link": "https://goo.gl/maps/2RD9LJ85UJiyjjMg7"
+    },
+    {
+      "name": "Amuary de La Taille",
+      "stars": 5,
+      "review": "This place has a vibe 🔥 …",
+      "link": "https://goo.gl/maps/ynGqb6mMtMEevj9R7"
+    }
+  ]
+}

@@ -1,49 +1,121 @@
-import React from "react";
 import Link from 'next/link'
+import Image from 'next/image';
 import { request } from '../../lib/datocms';
 import shortid from "shortid";
+import Filter from '@/components/filter';
+import Basket from '../svgs/basket.svg';
+import { useAppContext } from '@/context';
 
 export default function AllProducts({ data }) {
-  const { allProducts } = data;
+  const { allProducts, allGrowers } = data;
+  const { filter, setShowFilter } = useAppContext();
+  const renderProducts = () => {
+    const prouductLists = [];
+    const getCultivators = (arr) => {
+      if (arr) {
+        const reg = new RegExp(filter.growers.join('|').replaceAll(' ', '').toLowerCase())
+        return arr.find(item => item.replaceAll('-', '').replaceAll(' ', '').match(reg))
+      }
+    }
 
-  return (
-    <div>
-      <h1>Hello World</h1>
-    {
-      allProducts.map(item => (
-        <div key={ shortid.generate() }>
-          <Link href={ `/product/${ item.slug }` }>
-            <h3>{ item.name }</h3>
+    for (const item of allProducts) {
+      const { otherProps } = item;
+      const product = () => ( 
+        <li key={ shortid.generate() }>
+          <Link href={ `/product/${ item.slug }` } className='relative'>
+            {
+              item.image ? 
+              <div className='h-auto overflow-hidden'><Image src={{ ...item.image.responsiveImage }} priority alt="" className='min-h-48'/></div> : null
+            }
+            <p>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
+            <p style={{ fontSize: '.75rem !important', mb: 0, color: item.availability ? 'green' : 'red' }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
+            <h3 className='text-primary font-bold'>{ item.name }</h3>
+            { item.price ? <p className='text-primary'>{ item.price.toLocaleString() }.-</p> : null }
+            {
+              otherProps.cultivatedBy ? 
+              <div>
+                { otherProps.cultivatedBy.map(item => (
+                  <img 
+                    src={ item } 
+                    className='object-cover' 
+                    alt="" 
+                    loading="lazy" 
+                    key={ shortid.generate() } 
+                    style={{ maxWidth: '32px' }}/>
+                ))}
+              </div> : null
+            }
             {
               <button 
-                className="snipcart-add-item btn"
+                className="snipcart-add-item"
+                style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '4px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#fff', zIndex: '150'  }}
                 data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
                 data-item-price={ item.price }
                 data-item-description={ item.description }
-                // data-item-image={ item.image.url }
+                // data-item-image={ item.image.url ? item.image.url : '' }
                 data-item-url="/"
                 data-item-name={ item.name }
                 data-item-custom1-name="Size"
-                // data-item-custom1-options={ buyingOptions }
+                data-item-custom1-options={ otherProps.buyingOptions }
                 >
-                  BUY NOW
-                  {/* <Basket /> */}
+                  <Image src={ Basket } priority alt="" />
               </button> ?? item.availability
             }
           </Link>
-        </div>
-      ))
+        </li>
+      )
+
+      if (filter.growers.length && getCultivators(otherProps.cultivatedBy)) {
+        prouductLists.push(product());
+      }
+
+      if (!filter.growers.length) {
+        prouductLists.push(product());
+      }
     }
+
+    return prouductLists;
+
+  }
+
+  return (
+    <>
+    <div className='main__layout'>
+      <div className='flex justify-between'>
+        <h1 className='text-4xl mb-4 text-primary font-bold'>All Products</h1>
+        <button onClick={ setShowFilter }>Filter</button>
+      </div>
+      <ul className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+        { renderProducts() }
+      </ul>
     </div>
+    <Filter growers={ allGrowers } />
+    </>
   )
 }
 
 export async function getStaticProps() {
   const ALLPRODUCTS_QUERY = `
-    query AllProductsPage($limit: IntType) {
-      allProducts(first: $limit) {
+    query AllProductsPage {
+      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}}, first: "20") {
         availability
         name
+        image {
+          responsiveImage(imgixParams: { fit: fill, auto: format }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            base64
+          }
+          url
+        }
+        otherProps
         price
         description
         video {
@@ -53,12 +125,12 @@ export async function getStaticProps() {
         }
         slug
       }
+      allGrowers {
+        name
+      }
     }`
   ;
-  const data = await request({
-    query: ALLPRODUCTS_QUERY,
-    variables: { limit: 10 }
-  });
+  const data = await request({ query: ALLPRODUCTS_QUERY });
 
   return {
     props: { data }
