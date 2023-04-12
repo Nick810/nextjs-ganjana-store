@@ -24,7 +24,7 @@ const Product = ({ data }) => {
         /> : null
       }
       {
-        images ? images.map((item, index) => <div className='mb-4'><Image src={{ ...item.responsiveImage }} priority alt="" /></div>): null
+        images ? images.map((item, index) => <div className='mb-4' key={ shortid.generate() }><Image src={{ ...item.responsiveImage }} priority alt="" /></div>): null
       }
       <div style={{ padding: '0 5%' }}>
         <div className='mb-4'>

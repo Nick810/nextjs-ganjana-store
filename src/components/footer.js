@@ -25,17 +25,17 @@ export default function Footer() {
         <h3 className='font-bold text-primary-content text-2xl'>Our Location</h3>
         <ul className='flex flex-col gap-4'>
           <li key={ shortid.generate() }>
-            <a href="/" className='flex flex-col justify-center items-center'>
+            <Link href="/" className='flex flex-col justify-center items-center'>
               <Image
                 priority
                 width={ 40 }
                 src={ pin }
                 alt="Visit us at 17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230" />
               <p className='text-primary-content'>17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230</p>
-            </a>
+            </Link>
           </li>
           <li key={ shortid.generate() }>
-            <a href="/" className='flex flex-col justify-center items-center'>
+            <Link href="/" className='flex flex-col justify-center items-center'>
               <Image
                 priority
                 src={ phone }
@@ -43,7 +43,7 @@ export default function Footer() {
                 className='mb-2'
                 alt="Call us on 096-052-2070" />
               <p className='text-primary-content'>096-052-2070</p>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
