@@ -11,11 +11,14 @@ import AllCategories from '@/components/all-categories'
 import AllEvents from '@/components/all-events'
 import { request  } from '../../lib/datocms'
 import Divider from '@/components/divider'
+import SocialCTA from '@/components/social-cta'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ data }) {
-  const { allHeros } = data;
+  const { hero, socialCtas } = data;
+  console.log(data)
+  
   return (
     <>
       <Head>
@@ -25,7 +28,8 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Hero heading={ allHeros[0].heading } ctaTitle={ allHeros[0].ctaTitle } image={ allHeros[0].image }/>
+        <Hero heading={ hero[0].heading } ctaTitle={ hero[0].ctaTitle } image={ hero[0].image }/>
+        <SocialCTA datas={ socialCtas } />
         <Divider num={ 12 } />
         <CustomerReviews />
         <Divider num={ 12 } />
@@ -38,6 +42,7 @@ export default function Home({ data }) {
         <ShopByGrowers />
         <Divider num={ 12 } />
         <AllEvents />
+        <Divider num={ 12 } />
       </>
     </>
   )
@@ -46,7 +51,26 @@ export default function Home({ data }) {
 export async function getStaticProps() {
   const HERO_QUERY = `
     query Hero {
-      allHeros {
+      hero: allHeros(filter: {heading: {eq: "Finest Crafty Buds"}}) {
+        heading
+        ctaTitle
+        image {
+          responsiveImage(imgixParams: {fit: fill, auto: format}) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            base64
+          }
+          url
+        }
+      }
+      socialCtas: allHeros(filter: {heading: {notMatches: {pattern: "Finest Crafty Buds"}}}) {
         heading
         ctaTitle
         image {

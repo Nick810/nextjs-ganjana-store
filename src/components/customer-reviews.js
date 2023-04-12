@@ -41,30 +41,30 @@ export default function CustomerReviews() {
           data ? 
           data.map(item => (
             <li key={ shortid.generate() } className="carousel-item card border border-primary">
-              <a href={ item.link } className="p-8 border-white">
-                <div style={{ width: '72px', height: '72px', borderRadius: '50%', margin: 'auto', marginBottom: '16px' }}>
-                  <img src={item.url} width="120" height="120" alt="" />
+              <a href={ item.link } className="p-4 border-white">
+                <div className="flex justify-end">
+                  <Image src={ GoogleIcon } width={ 32 } priority alt="" />
+                </div>
+                <div className="flex justify-center">
+                  <img src={item.url} width="60" height="60" alt="" />
                 </div>
                 <h3 className="text-center text-primary">{ item.name }</h3>
                 <ul className="flex justify-center gap-4 mt-4 mb-4">
                   {
                     [1, 2, 3, 4, 5].map(star => (
                       <li key={ shortid.generate() }>
-                        <Image priority src={ StarIcon } width={ 32 } height={ 32 } alt="Star Icon" />
+                        <Image priority src={ StarIcon } width={ 24 } height={ 24 } alt="Star Icon" />
                       </li>
                       ))
                   }
                 </ul>
-                <p className="max-w-xs text-primary">{ item.review.substring(0, 420) + '...' }</p>
+                <p className="max-w-xs text-primary text-sm">{ item.review.substring(0, 420) + '...' }</p>
 
-                <div className="flex flex-col items-center mt-6 mb-4">
-                  <button className="flex justify-center text-primary items-center font-bold border px-4 py-2">
+                <div className="flex flex-col items-center mt-6">
+                  <button className="flex justify-center text-primary items-center font-bold px-4 py-2">
                     See full review
                     <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1 translate-y-1"/>
                   </button>
-                </div>
-                <div>
-                  <Image src={ GoogleIcon } width={ 32 } priority alt="" style={{ margin: 'auto'}} />
                 </div>
               </a>
             </li>

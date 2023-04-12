@@ -21,7 +21,7 @@ export default function AllProducts({ data }) {
     for (const item of allProducts) {
       const { otherProps } = item;
       const product = () => ( 
-        <li key={ shortid.generate() } className='border'>
+        <li key={ shortid.generate() } className=''>
           <Link href={ `/product/${ item.slug }` } className='relative'>
             {
               item.image ? 

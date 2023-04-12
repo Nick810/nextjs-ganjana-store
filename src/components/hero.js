@@ -17,28 +17,6 @@ export default function Hero({ ...props }) {
           </div>
         </div>
       </div>
-      
-      {/* <Swiper
-        slidesPerView={1}
-        width={ 320 }
-        spaceBetween={ 16 }
-        style={{ marginBottom: '16px', marginTop: '32px', paddingLeft: '5%' }}
-        className="mySwiper-1"
-      >
-        {
-          items.edges.map(item => (
-            <SwiperSlide key={ shortid.generate() }>
-              <a href={ item.node.ctaUrl }>
-                <GatsbyImage image={ getImage(item.node.image) } alt="" />
-                <div style={{ marginBottom: '16px' }}>
-                  <Typography component="h3" sx={{ mb: 1, mt: 1, fontSize: '1.15rem !important' }}>{ item.node.heading }</Typography>
-                  <button style={{ display: 'flex', alignItems: 'center', color: '#7D7D7D', fontWeight: 500 }}>{ item.node.ctaTitle }<TrendingFlatIcon sx={{ ml: 1, transform: 'translateY(2px)' }} /></button>
-                </div>
-              </a>
-            </SwiperSlide>
-          ))
-        }
-      </Swiper> */}
     </section>
   )
 }
