@@ -34,9 +34,9 @@ export default function CustomerReviews() {
   }, [])
 
   return (
-    <section className="main__layout mt-4 mb-4">
-      <h2 className="text-4xl mb-4 text-primary font-bold">Words from our customers</h2>
-      <ul className="carousel gap-8 p-8">
+    <section className="main__layout">
+      <h2 className="text-3xl text-primary font-bold">Words from our customers</h2>
+      <ul className="carousel gap-8 py-4 px-8">
         {
           data ? 
           data.map(item => (

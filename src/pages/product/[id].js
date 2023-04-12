@@ -1,30 +1,33 @@
 import { request } from '../../../lib/datocms';
 import Image from 'next/image';
 import Basket from '../../svgs/basket.svg';
-import Line from '../../images/line.png';
+import Line from '../../images/line-wb.png';
 import Messenger from '../../svgs/facebook-messenger.svg';
 import Video from '@/components/video-clip';
 import shortid from 'shortid';
 
 const Product = ({ data }) => {
   const productData  = data.allProducts[0];
-  const { availability, description, name, otherProps, price, video } = productData;
+  const { availability, description, images, name, otherProps, price, video } = productData;
   const { availableSizes, buyingOptions, cannabiniod, cultivatedBy, feeling, flavor, strainType } = otherProps
   
   return (
     <div className='pt-8 pb-8'>
-      <div className='text-center'>
+      <div className='text-center mb-8'>
         <h1 className='text-primary font-bold text-3xl mb-2'>{ name }</h1>
         <p className='text-primary'>{ description }</p>
       </div>
-      {/* { 
-        <Video 
+      { 
+        video ? <Video 
           videoSrcURL={ `https://player.vimeo.com/video/${ productData.video.url.match(/\d+/g) }` }
           videoTitle={ productData.video.title }
-        /> ?? video
-      } */}
+        /> : null
+      }
+      {
+        images ? images.map((item, index) => <div className='mb-4'><Image src={{ ...item.responsiveImage }} priority alt="" /></div>): null
+      }
       <div style={{ padding: '0 5%' }}>
-        <div>
+        <div className='mb-4'>
           <p className='text-primary'>{ strainType } | THC:{ cannabiniod.thc }%</p>
         </div>
           <div>
@@ -87,7 +90,6 @@ const Product = ({ data }) => {
           <div className='flex flex-col gap-4'>
             <button 
               className={ `snipcart-add-item ${ availability ? '' : 'sold-out' } text-primary-content bg-primary flex justify-center gap-2 pt-3 pb-3 pl-6 pr-6` }
-              // style={{ border: '1px solid black', background: 'white', color: 'black', width: '100%', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
               data-item-id={ name.replaceAll(' ', '-').toLowerCase() }
               data-item-price={ price }
               data-item-description={ description }
@@ -98,20 +100,20 @@ const Product = ({ data }) => {
               data-item-custom1-options={ buyingOptions }
               >
                 { availability ? `Add to cart` : `Sold out` }
-                <Image src={ Basket } priority alt="" />
+                <div className='bg-primary-content rounded-full'><Image src={ Basket } priority alt="" /></div>
                 {/* <div style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '2px' }}><Basket/></div> */}
             </button>
             <div className="flex gap-4">
               <a 
                 href="https://lin.ee/Nc0eINQ" 
-                className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold"
+                className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold text-sm text-primary"
                 style={{ width: '100%' }}>
                   <Image src={ Line } width={ 24 } priority alt="" />
                   Buy on Line
               </a>
               <a 
                 href="http://m.me/ganjanacup"
-                className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold"
+                className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold text-sm text-primary"
                 style={{ width: '100%' }}>
                   <Image src={ Messenger } priority alt="" />
                   Buy on Messenger
@@ -140,7 +142,6 @@ export async function getStaticPaths() {
     paths,
     fallback: false
   }
-  // Return a list of possible value for id
 }
 
 export async function getStaticProps({ params }) {
@@ -153,12 +154,19 @@ export async function getStaticProps({ params }) {
         otherProps
         price
         images {
-          responsiveImage {
+          responsiveImage(imgixParams: { fit: fill, auto: format }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
             alt
-            base64
-            bgColor
             title
+            base64
           }
+          url
         }
         video {
           thumbnailUrl

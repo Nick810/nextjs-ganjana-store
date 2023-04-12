@@ -61,13 +61,13 @@ export default function AllProducts() {
   return (
     <section className='main__layout mb-4 mt-4'>
       <div className='flex justify-between items-center'>
-        <h2 className="text-4xl text-primary font-bold">All Flowers</h2>
-        <Link href="/all-products" className="flex justify-end text-primary font-bold">
+        <h2 className="text-3xl text-primary font-bold">All Flowers</h2>
+        <Link href="/all-products" className="flex justify-end text-primary items-center font-bold gap-1">
           see all products
-          <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1"/>
+          <Image src={ ArrowRight } width={ 32 } priority alt="" className="translate-y-1"/>
         </Link>
       </div>
-      <ul className='carousel gap-4 pt-4'>
+      <ul className='carousel gap-5 pt-4'>
         {
           data ? data.allProducts.map((item, index) => {
             const { cannabiniod, buyingOptions, strainType } = item.otherProps;
@@ -78,11 +78,11 @@ export default function AllProducts() {
                 {/* <Link href={`product/${ item.slug }`} className='relative' style={{ transform: `translateY(${ (index * 10) + 16 }px)` }}> */}
                 <Link href={`product/${ item.slug }`} className='relative' >
                   { item.image ? <div className='overflow-hidden' style={{ maxWidth: '160px', maxHeight: '160px' }}><Image src={{ ...item.image.responsiveImage }} alt="" priority /></div> : null }
-                  <div>
-                    <p style={{ fontSize: '.75rem !important', mb: 0, color: item.availability ? 'green' : 'red' }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-                    <p>{ strainType } | THC: { cannabiniod.thc }%</p>
-                    <h4 className='text-primary font-bold'>{ item.name }</h4>
-                    { item.price ? <p className='text-primary'>{ item.price.toLocaleString() }.-</p> : null }
+                  <div className='py-1'>
+                    <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
+                    <p className='text-sm'>{ strainType } | THC: { cannabiniod.thc }%</p>
+                    <h3 className='text-primary'>{ item.name }</h3>
+                    { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
                   </div>
                   {
                     item.availability ? 

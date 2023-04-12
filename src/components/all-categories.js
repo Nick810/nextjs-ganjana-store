@@ -44,9 +44,9 @@ export default function AllCategories() {
   }, [])
   
   return (
-    <section style={{ paddingLeft: '5%' }} className='mb-4 mt-4'>
+    <section style={{ paddingLeft: '5%' }}>
       <div>
-        <h2 className="text-4xl mb-4  text-primary font-bold">All Categories</h2>
+        <h2 className="text-3xl mb-4 text-primary font-bold">All Categories</h2>
         <ul className="carousel rounded-box gap-0">
           {
             data ? 

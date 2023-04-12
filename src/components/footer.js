@@ -3,6 +3,7 @@ import { navigationMenu } from '../../siteconfig.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import pin from '../svgs/pin_fill.svg';
+import line from '../images/line-bw.png';
 import phone from '../svgs/phone_fill.svg';
 import facebook from '../svgs/facebook.svg';
 import instagram from '../svgs/instagram.svg';
@@ -27,6 +28,7 @@ export default function Footer() {
             <a href="/" className='flex flex-col justify-center items-center'>
               <Image
                 priority
+                width={ 40 }
                 src={ pin }
                 alt="Visit us at 17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230" />
               <p className='text-primary-content'>17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230</p>
@@ -37,6 +39,7 @@ export default function Footer() {
               <Image
                 priority
                 src={ phone }
+                width={ 24 }
                 className='mb-2'
                 alt="Call us on 096-052-2070" />
               <p className='text-primary-content'>096-052-2070</p>
@@ -67,7 +70,11 @@ export default function Footer() {
           </li>
           <li key={ shortid.generate() }>
             <a href="https://lin.ee/Nc0eINQ">
-              {/* <img src={ Line } alt="" /> */}
+            <Image
+              priority
+              src={ line }
+              width={ 25 }
+              alt="Follow us on Line" />
             </a>
           </li>
         </ul>

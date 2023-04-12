@@ -4,7 +4,7 @@ export default function AllEvents() {
   return (
     <section style={{ padding: '32px 0px'}}>
       <div className="main__layout">
-        <h2 className="text-4xl mb-4 text-primary font-bold">Catch up with Ganjana</h2>
+        <h2 className="text-3xl mb-4 text-primary font-bold">Catch up with Ganjana</h2>
       </div>
       <ul>
         <li className="main__layout">

@@ -12,7 +12,7 @@ export default function Hero({ ...props }) {
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
               <h1 className="mb-5 text-5xl font-bold text-primary-content">{ heading }</h1>
-              <Link href="/all-products" className="btn btn-primary text-primary-content max-w-xs w-full border">{ ctaTitle }</Link>
+              <Link href="/all-products" className="btn btn-primary text-primary-content max-w-md w-full border border-primary-content">{ ctaTitle }</Link>
             </div>
           </div>
         </div>

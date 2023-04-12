@@ -52,15 +52,15 @@ export default function ProductLists() {
   return (
     // items ? 
       <section className="main__layout">
-        <h2 className="text-4xl mb-4 text-primary font-bold">Special Drop</h2>
+        <h2 className="text-3xl mb-10 text-primary font-bold">Special Drop</h2>
         <ul>
           { data ? data.allProducts.map((item, index) => {
             
             return (
               <li key={ shortid.generate() }>
                 <div className="flex flex-col relative">
-                  <div style={{ position: 'absolute', top: '-12px', left: '-22px', zIndex: 1000 }}>
-                    <p className="font-bold text-8xl">{ `0${ index + 1 }` }</p>
+                  <div style={{ position: 'absolute', top: '-36px', left: '-24px', zIndex: 1000 }}>
+                    <p className="font-bold text-7xl">{ `0${ index + 1 }` }</p>
                   </div>
                   { item.image ? <Image src={{ ...item.image.responsiveImage }} alt="" priority /> : null }
                   <div style={{ width: '80%' }}>
@@ -74,7 +74,7 @@ export default function ProductLists() {
                     <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1"/>
                   </Link>
                 </div>
-                <div className="divider"></div>
+                <div className={ `divider ${ index === data.allProducts.length - 1 ? 'mb-0' : 'mb-12' }`}></div>
               </li>
             )}) : null 
           }

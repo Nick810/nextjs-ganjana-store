@@ -18,7 +18,7 @@ export default function ShopByGrowers() {
           query AllGrowers {
             allGrowers {
               avartar {
-                responsiveImage(imgixParams: { fit: crop, w: 120, h: 120, auto: format }) {
+                responsiveImage(imgixParams: { fit: fill, auto: format }) {
                   srcSet
                   webpSrcSet
                   sizes
@@ -50,7 +50,7 @@ export default function ShopByGrowers() {
 
   return (
     <section style={{ padding: '32px 0px', paddingLeft: '5%' }}>
-      <h2 className="text-4xl mb-4 text-primary font-bold">Shop by growers</h2>
+      <h2 className="text-3xl mb-4 text-primary font-bold">Shop by growers</h2>
 
       <ul className="carousel rounded-box gap-4">
         {
@@ -58,7 +58,7 @@ export default function ShopByGrowers() {
           data.allGrowers.map(item => (
             <li key={ shortid.generate() } className="carousel-item">
               <Link href={ `/all-products` } onClick={ () => handleSetFilter(item.name) }>
-                <Image src={{ ...item.avartar.responsiveImage }} priority alt={ `Shop By ${item.name}` } />
+                <div className="overflow-hidden" style={{ width: '120px', height: '120px'}}><Image src={{ ...item.avartar.responsiveImage }} width={ 120 } height={ 120 } priority alt={ `Shop By ${item.name}` } /></div>
               </Link>
             </li>
           )) : <li><Loading /></li>

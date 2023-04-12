@@ -15,7 +15,7 @@ export default function Header() {
           </Link>
           <div style={{ display: 'flex', color: 'white', alignItems: 'center', cursor: 'pointer' }} onClick={ () => setHamburger(!isHamburger) }>
             { isHamburger ? null : 'Menu' }
-            {/* <Hamburger toggled={ isHamburger } onToggle={ setHamburger } color="#fff" size={ 24 } /> */}
+            <Hamburger toggled={ isHamburger } onToggle={ setHamburger } color="#fff" size={ 24 } />
           </div>
         </div>
       </header>

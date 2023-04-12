@@ -10,6 +10,7 @@ import ShopByGrowers from '@/components/shop-by-growers'
 import AllCategories from '@/components/all-categories'
 import AllEvents from '@/components/all-events'
 import { request  } from '../../lib/datocms'
+import Divider from '@/components/divider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,11 +26,17 @@ export default function Home({ data }) {
       </Head>
       <>
         <Hero heading={ allHeros[0].heading } ctaTitle={ allHeros[0].ctaTitle } image={ allHeros[0].image }/>
+        <Divider num={ 12 } />
         <CustomerReviews />
+        <Divider num={ 12 } />
         <ProductLists />
+        <Divider num={ 12 } />
         <AllCategories />
+        <Divider num={ 12 } />
         <AllProducts />
+        <Divider num={ 12 } />
         <ShopByGrowers />
+        <Divider num={ 12 } />
         <AllEvents />
       </>
     </>
