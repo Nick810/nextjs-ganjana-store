@@ -8,7 +8,7 @@ import shortid from 'shortid';
 
 const Product = ({ data }) => {
   const productData  = data.allProducts[0];
-  const { availability, description, images, name, otherProps, price, video } = productData;
+  const { availability, description, image, images, name, otherProps, price, video } = productData;
   const { availableSizes, buyingOptions, cannabiniod, cultivatedBy, feeling, flavor, strainType } = otherProps
   
   return (
@@ -22,6 +22,9 @@ const Product = ({ data }) => {
           videoSrcURL={ `https://player.vimeo.com/video/${ productData.video.url.match(/\d+/g) }` }
           videoTitle={ productData.video.title }
         /> : null
+      }
+      {
+        image ? <Image className='mb-4' src={{ ...image.responsiveImage }} priority alt="" /> : null
       }
       {
         images ? images.map((item, index) => <div className='mb-4' key={ shortid.generate() }><Image src={{ ...item.responsiveImage }} priority alt="" /></div>): null
@@ -93,7 +96,7 @@ const Product = ({ data }) => {
               data-item-id={ name.replaceAll(' ', '-').toLowerCase() }
               data-item-price={ price }
               data-item-description={ description }
-              // data-item-image={ image.url }
+              data-item-image={ image.url }
               data-item-url={ `/${ name.replaceAll(' ', '_').toLowerCase() }` }
               data-item-name={ name }
               data-item-custom1-name="Size"
@@ -153,7 +156,7 @@ export async function getStaticProps({ params }) {
         name
         otherProps
         price
-        images {
+        image {
           responsiveImage(imgixParams: { fit: fill, auto: format }) {
             srcSet
             webpSrcSet
@@ -167,6 +170,20 @@ export async function getStaticProps({ params }) {
             base64
           }
           url
+        }
+        images {
+          responsiveImage(imgixParams: { fit: fill, auto: format }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            base64
+          }
         }
         video {
           thumbnailUrl

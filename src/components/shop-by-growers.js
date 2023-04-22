@@ -50,7 +50,7 @@ export default function ShopByGrowers() {
 
   return (
     <section style={{ padding: '32px 0px', paddingLeft: '5%' }}>
-      <h2 className="text-3xl mb-4 text-primary font-bold">Shop by growers</h2>
+      <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8">Shop by growers</h2>
 
       <ul className="carousel rounded-box gap-4">
         {

@@ -8,7 +8,7 @@
 
 .active {
   background-color: black;
-  color: #fff;
+  color: #f6f6f6;
 }
 
 body { font-family: "Jost", sans-serif; }
@@ -31,7 +31,9 @@ body { font-family: "Jost", sans-serif; }
   height: 100%;
 }
 
-
+h3 {
+  line-height: 1.5625rem;
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -91,13 +93,13 @@ body { font-family: "Jost", sans-serif; }
     --tile-start-rgb: 2, 13, 46;
     --tile-end-rgb: 2, 5, 19;
     --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
+      #f6f6f6fff80,
+      #f6f6f6fff40,
+      #f6f6f6fff30,
+      #f6f6f6fff20,
+      #f6f6f6fff10,
+      #f6f6f6fff10,
+      #f6f6f6fff80
     );
 
     --callout-rgb: 20, 20, 20;

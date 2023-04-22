@@ -3,10 +3,19 @@ import { request } from '../../lib/datocms';
 import Loading from './loading';
 import shortid from 'shortid';
 import Image from 'next/image';
+import { useAppContext } from '@/context';
+import { useRouter } from 'next/router';
 
 export default function AllCategories() {
   const [data, setData] = useState();
   const [error, setError] = useState("");
+  const { handleSetFilter } = useAppContext();
+  const router = useRouter();
+  const handleClick = (item) => {
+    handleSetFilter(item);
+    router.push('/all-products');
+    return;
+  }
 
   useEffect(() => {
     const fetchCategories = async() => {
@@ -46,24 +55,30 @@ export default function AllCategories() {
   return (
     <section style={{ paddingLeft: '5%' }}>
       <div>
-        <h2 className="text-3xl mb-4 text-primary font-bold">All Categories</h2>
-        <ul className="carousel rounded-box gap-0">
+        <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8">All Categories</h2>
+        <ul className="carousel rounded-box gap-0 overflow-hidden">
           {
             data ? 
               data.map((item, index) => (
-              <li 
-                key={ shortid.generate() }
-                className="card w-96 bg-base-100 shadow-xl image-full carousel-item" 
-                style={{ 
-                  height: '132px',
-                  maxWidth: '156px',
-                  clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)', 
-                  marginTop: index % 2 !== 0 ? '32px' : '0px' }}>
-                <figure><Image src={{ ...item.responsiveImage }} alt="" priority /></figure>
-                <div className="card-body text-center justify-center">
-                  <h2 className="text-primary-content font-bold text-xl">{ item.title }</h2>
-                </div>
-              </li>
+                <li style={{ filter: 'drop-shadow(4px 4px 0px rgb(246,216,96,.6))'}}>
+                  <div 
+                    onClick={ () => handleClick(item.title) }
+                    key={ shortid.generate() }
+                    className="card w-96 bg-base-100 image-full carousel-item" 
+                    style={{ 
+                      height: '132px',
+                      maxWidth: '156px',
+                      clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)', 
+                      marginTop: index % 2 !== 0 ? '32px' : '0px',
+                      cursor: 'pointer' }}>
+                    <div className='grid place-items-center' style={{ height: 'inherit'}}>
+                      <figure style={{ gridArea: '1 / 1'}}><Image src={{ ...item.responsiveImage }} alt="" priority /></figure>
+                      <div className="card-body text-center justify-center" style={{ gridArea: '1 / 1'}}>
+                        <h2 className="text-primary-content font-bold text-xl">{ item.title }</h2>
+                      </div>
+                    </div>
+                  </div>
+                </li>
             )) : <Loading />
           }
         </ul>

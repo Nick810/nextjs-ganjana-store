@@ -52,8 +52,8 @@ export default function ProductLists() {
   return (
     // items ? 
       <section className="main__layout">
-        <h2 className="text-3xl mb-10 text-primary font-bold">Special Drop</h2>
-        <ul>
+        <h2 className="text-3xl mb-10 text-primary font-bold md:mb-16">Special Drop</h2>
+        <ul className="grid md:grid-cols-4">
           { data ? data.allProducts.map((item, index) => {
             
             return (
@@ -63,10 +63,10 @@ export default function ProductLists() {
                     <p className="font-bold text-7xl">{ `0${ index + 1 }` }</p>
                   </div>
                   { item.image ? <Image src={{ ...item.image.responsiveImage }} alt="" priority /> : null }
-                  <div style={{ width: '80%' }}>
-                    <p className={ item.availability ? 'text-success' : 'text-error' }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-                    <p>{ item.otherProps.strainType } | THC:{ item.otherProps.cannabiniod.thc }%</p>
-                    <h3 className="text-primary font-bold">{ item.name }</h3>
+                  <div className="pt-4 md:px-5">
+                    <p className={ `text-sm mb-1 ${item.availability ? 'text-success' : 'text-error' }`}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
+                    <p className='text-sm mb-1'>{ item.otherProps.strainType } | THC:{ item.otherProps.cannabiniod.thc }%</p>
+                    <h3 className="text-primary font-bold mb-2">{ item.name }</h3>
                     { item.description ? <p className="text-primary">{ item.description }</p> : null }
                   </div>
                   <Link href={`product/${ item.slug }`} className="flex justify-end text-primary font-bold mt-4">

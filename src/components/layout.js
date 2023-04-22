@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main style={{ marginTop: '64px', backgroundColor: '#fff' }}>
+      <main style={{ marginTop: '64px', backgroundColor: '#f6f6f6' }}>
         { children }
       </main>
       <Footer />

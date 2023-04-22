@@ -12,7 +12,8 @@ module.exports = {
       {
         myTheme: {
           "primary": "#000",
-          "primary-content": "#fff",
+          "primary-content": "#f6f6f6",
+          "secondary": "#f6d860",
           "success": "#36D399",
           "warning": "#FBBD23",
           "error": "#F87272",

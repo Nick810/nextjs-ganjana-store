@@ -48,14 +48,14 @@ export default function AllEvents() {
   return (
     <section>
       <div className="main__layout">
-        <h2 className="text-3xl mb-4 text-primary font-bold">Catch up with Ganjana</h2>
+        <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8">Catch up with Ganjana</h2>
       </div>
       {
         data ?
         <div className="main__layout">
-          <div>
+          <div className="mb-4">
             <Image src={{ ...data[0].image.responsiveImage }} alt={ data[0].eventTitle } priority />
-            <div className="py-2">
+            <div className="pt-3">
               <div className="flex gap-2 mb-2">{ data[0].tags.map(tag => <span className="border text-primary py-2 px-4 text-xs" key={ shortid.generate() }>{ tag }</span> )}</div>
               <h3 className="text-xl font-bold text-primary">{ data[0].eventTitle }</h3>
             </div>
@@ -72,7 +72,7 @@ export default function AllEvents() {
                 return (
                   <li key={shortid.generate()} className="carousel-item flex flex-col">
                     <Image src={{ ...item.image.responsiveImage }} width={ 320 } alt={ item.eventTitle } priority />
-                    <div className="py-2">
+                    <div className="pt-3">
                     <div className="flex gap-2 mb-2">{ data[0].tags.map(tag => <span className="border text-primary py-2 px-4 text-xs" key={ shortid.generate() }>{ tag }</span> )}</div>
                       <h3 className="text-xl font-bold text-primary">{ item.eventTitle }</h3>
                     </div>

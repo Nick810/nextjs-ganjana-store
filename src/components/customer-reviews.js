@@ -35,7 +35,7 @@ export default function CustomerReviews() {
 
   return (
     <section className="main__layout">
-      <h2 className="text-3xl text-primary font-bold">Words from our customers</h2>
+      <h2 className="text-3xl text-primary font-bold md:mb-4">Words from our customers</h2>
       <ul className="carousel gap-8 py-4 px-8">
         {
           data ? 

@@ -60,7 +60,7 @@ export default function AllProducts() {
 
   return (
     <section className='main__layout mb-4 mt-4'>
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-center md:mb-4'>
         <h2 className="text-3xl text-primary font-bold">All Flowers</h2>
         <Link href="/all-products" className="flex justify-end text-primary items-center font-bold gap-1">
           see all products
@@ -69,7 +69,7 @@ export default function AllProducts() {
       </div>
       <ul className='carousel gap-5 pt-4'>
         {
-          data ? data.allProducts.map((item, index) => {
+          data ? data.allProducts.map((item) => {
             const { cannabiniod, buyingOptions, strainType } = item.otherProps;
 
             return (
@@ -78,7 +78,7 @@ export default function AllProducts() {
                 {/* <Link href={`product/${ item.slug }`} className='relative' style={{ transform: `translateY(${ (index * 10) + 16 }px)` }}> */}
                 <Link href={`product/${ item.slug }`} className='relative' >
                   { item.image ? <div className='overflow-hidden' style={{ maxWidth: '160px', maxHeight: '160px' }}><Image src={{ ...item.image.responsiveImage }} alt="" priority /></div> : null }
-                  <div className='py-1'>
+                  <div className='pt-1'>
                     <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
                     <p className='text-sm'>{ strainType } | THC: { cannabiniod.thc }%</p>
                     <h3 className='text-primary'>{ item.name }</h3>
@@ -88,7 +88,7 @@ export default function AllProducts() {
                     item.availability ? 
                     <button 
                       className="snipcart-add-item"
-                      style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '4px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#fff', zIndex: '150'  }}
+                      style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '4px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
                       data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
                       data-item-price={ item.price }
                       data-item-description={ item.description }

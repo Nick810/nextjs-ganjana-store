@@ -17,7 +17,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ data }) {
   const { hero, socialCtas } = data;
-  console.log(data)
   
   return (
     <>

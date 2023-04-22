@@ -11,7 +11,6 @@ import instagram from '../svgs/instagram.svg';
 export default function Footer() {
   return (
     <footer className="footer footer-center bg-primary text-base-content main__layout" style={{ paddingTop: '2rem', paddingBottom: '2rem'}}>
-      {/* <div className='divider'></div> */}
       <ul className='flex flex-col gap-3'>
         {
           navigationMenu.map(item => (
@@ -22,7 +21,7 @@ export default function Footer() {
         }
       </ul>
       <div>
-        <h3 className='font-bold text-primary-content text-2xl'>Our Location</h3>
+        <h3 className='font-bold text-2xl text-gray-500'>Our Location</h3>
         <ul className='flex flex-col gap-4'>
           <li key={ shortid.generate() }>
             <Link href="/" className='flex flex-col justify-center items-center'>
@@ -48,7 +47,7 @@ export default function Footer() {
         </ul>
       </div>
       <div>
-        <h3 className='font-bold text-primary-content text-2xl'>Connect with us</h3>
+        <h3 className='font-bold text-2xl text-gray-500'>Connect with us</h3>
         <ul className='flex justify-center gap-4'>
           <li key={ shortid.generate() }>
             <a href="https://www.facebook.com/ganjanacup/">
@@ -83,9 +82,8 @@ export default function Footer() {
         <li key={ shortid.generate() }><Link href="/" className='text-xs'>terms of service</Link></li>
         <li key={ shortid.generate() }><Link href="/" className='text-xs'>privacy policy</Link></li>
       </ul>
-      {/* <div className="divider"></div> */}
       <div>
-        <p className="text-xs">{ `Copyright © ${ new Date().getFullYear() } - All right reserved by Ganjana Enterprise` }</p>
+        <p className="text-xs text-gray-500">{ `Copyright © ${ new Date().getFullYear() } - All right reserved by Ganjana Enterprise` }</p>
       </div>
     </footer>
   )
