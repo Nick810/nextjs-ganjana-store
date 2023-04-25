@@ -57,7 +57,7 @@ export default function AllCategories() {
           {
             data ? 
               data.map((item, index) => (
-                <li style={{ filter: 'drop-shadow(4px 4px 0px rgb(246,216,96,.6))'}}>
+                <li key={ index } style={{ filter: 'drop-shadow(4px 4px 0px rgb(246,216,96,.6))'}}>
                   <div 
                     onClick={ () => handleClick(item.title) }
                     key={ shortid.generate() }
