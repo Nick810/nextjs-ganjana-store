@@ -49,10 +49,10 @@ export default function ShopByGrowers() {
   }, [])
 
   return (
-    <section style={{ padding: '32px 0px', paddingLeft: '5%' }}>
-      <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8">Shop by growers</h2>
+    <section style={{ padding: '32px 0px', paddingLeft: '5%' }} className="bg-black">
+      <h2 className="text-3xl mb-4 text-primary-content font-bold md:mb-8">Shop by growers</h2>
 
-      <ul className="carousel rounded-box gap-4">
+      <ul className="carousel rounded-box gap-4 md:gap-10">
         {
           data ? 
           data.allGrowers.map(item => (

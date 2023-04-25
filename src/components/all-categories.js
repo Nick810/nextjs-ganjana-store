@@ -22,9 +22,6 @@ export default function AllCategories() {
       try {
         const ALLCATEGORIES = `
           query AllCategories {
-            allProducts {
-              category
-            }
             allUploads(filter: {tags: {eq: "category"}}) {
               responsiveImage(imgixParams: { fit: fill, auto: format }) {
                 srcSet
@@ -53,10 +50,10 @@ export default function AllCategories() {
   }, [])
   
   return (
-    <section style={{ paddingLeft: '5%' }}>
+    <section className='pl-[5%]'>
       <div>
         <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8">All Categories</h2>
-        <ul className="carousel rounded-box gap-0 overflow-hidden">
+        <ul className="carousel rounded-box gap-0 lg:gap-4 overflow-y-hidden">
           {
             data ? 
               data.map((item, index) => (

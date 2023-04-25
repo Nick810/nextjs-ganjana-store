@@ -5,7 +5,16 @@ module.exports = {
     './src/components/**/*.{html,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        'para': '540px'
+      },
+      gridTemplateColumns: {
+        'header-menu': '96px 972px 1fr',
+        'first-blog': '70% 1fr',
+        'home-shop': '500px 1fr'
+      }
+    },
   },
   daisyui: {
     themes: [

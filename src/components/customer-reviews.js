@@ -1,11 +1,8 @@
 import { request } from "../../lib/datocms"
 import { useEffect, useState } from "react";
 import { googleReviews } from '../../siteconfig.json';
-import StarIcon from '../svgs/star.svg';
-import GoogleIcon from '../images/google_g_icon.png';
 import Image from "next/image";
 import shortid from "shortid";
-import ArrowRight from '../svgs/arrow-long-right.svg';
 
 export default function CustomerReviews() {
   const [data, setData] = useState();
@@ -40,10 +37,10 @@ export default function CustomerReviews() {
         {
           data ? 
           data.map(item => (
-            <li key={ shortid.generate() } className="carousel-item card border border-primary">
+            <li key={ shortid.generate() } className="carousel-item card border border-gray-300 shadow-md">
               <a href={ item.link } className="p-4 border-white">
                 <div className="flex justify-end">
-                  <Image src={ GoogleIcon } width={ 32 } priority alt="" />
+                  <Image src='/google_g_icon.png' width={ 32 } height={ 32 } priority alt="" />
                 </div>
                 <div className="flex justify-center">
                   <img src={item.url} width="60" height="60" alt="" />
@@ -53,17 +50,17 @@ export default function CustomerReviews() {
                   {
                     [1, 2, 3, 4, 5].map(star => (
                       <li key={ shortid.generate() }>
-                        <Image priority src={ StarIcon } width={ 24 } height={ 24 } alt="Star Icon" />
+                        <Image priority src='/star.svg' width={ 24 } height={ 24 } alt="Star Icon" />
                       </li>
                       ))
                   }
                 </ul>
                 <p className="max-w-xs text-primary text-sm">{ item.review.substring(0, 420) + '...' }</p>
 
-                <div className="flex flex-col items-center mt-6">
-                  <button className="flex justify-center text-primary items-center font-bold px-4 py-2">
+                <div className="flex flex-col items-center mt-6 mb-4">
+                  <button className="border-b border-gray-400 flex justify-center text-primary items-center font-bold px-4 py-2">
                     See full review
-                    <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1 translate-y-1"/>
+                    <Image src='/arrow-long-right.svg' width={ 32 } height={ 32 } priority alt="" className="ml-1 translate-y-1"/>
                   </button>
                 </div>
               </a>

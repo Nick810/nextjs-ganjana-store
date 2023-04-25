@@ -1,3 +1,3 @@
-export default function Divider({ num }) {
-  return <div className={ `mb-${ num } mt-${ num }` }></div>
+export default function Divider({ num, extraClass }) {
+  return <div className={ `mb-${ num } mt-${ num } ${ extraClass }` }></div>
 }

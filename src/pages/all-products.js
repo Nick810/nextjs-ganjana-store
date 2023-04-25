@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { request } from '../../lib/datocms';
 import shortid from "shortid";
 import Filter from '@/components/filter';
-import Basket from '../svgs/basket.svg';
 import { useAppContext } from '@/context';
 
 const imgStyle = {
@@ -23,7 +22,6 @@ const imgStyle = {
 export default function AllProducts({ data }) {
   const { allProducts, allGrowers } = data;
   const { filter, setShowFilter } = useAppContext();
-  console.log(allProducts)
   const renderProducts = () => {
     const prouductLists = [];
     const getCultivators = (arr) => {
@@ -46,9 +44,9 @@ export default function AllProducts({ data }) {
             </div>
             <div className='pt-3 pb-3'>
               <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-              <p className='text-sm'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
+              <p className='text-sm text-gray-400'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
               <h3 className='text-primary'>{ item.name }</h3>
-              { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : null }
+              { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
             </div>
             {
               <button 
@@ -63,7 +61,7 @@ export default function AllProducts({ data }) {
                 data-item-custom1-name="Size"
                 data-item-custom1-options={ otherProps.buyingOptions }
                 >
-                  <Image src={ Basket } priority alt="" />
+                  <Image src='/basket.svg' width={ 24 } height={ 24 } priority alt="" />
               </button> ?? item.availability
             }
           </Link>

@@ -1,9 +1,6 @@
 import { navigationMenu } from '../../siteconfig.json';
 import Link from 'next/link';
 import Image from 'next/image';
-import line from '../images/line-bw.png';
-import facebook from '../svgs/facebook.svg';
-import instagram from '../svgs/instagram.svg';
 import shortid from "shortid";
 
 export default function MobileNav({ ...props }) {
@@ -13,7 +10,7 @@ export default function MobileNav({ ...props }) {
         <ul className='flex flex-col items-center mb-12 gap-3'>
           { navigationMenu.map(item => (
             <li key={ shortid.generate() } style={{ p: 0, justifyContent: 'center' }} onClick={ () => props.handleMenu(false) }>
-              <Link href={ item.path } className='font-bold text-lg text-primary-content uppercase'>{ item.title }</Link>
+              <Link href={ item.path } className='font-normal text-lg text-primary-content uppercase'>{ item.title }</Link>
             </li>
           ))}
         </ul>
@@ -24,8 +21,9 @@ export default function MobileNav({ ...props }) {
               <a href="https://www.facebook.com/ganjanacup/">
               <Image
                 priority
-                src={ facebook }
-                width={ 24 }
+                src='/facebook.svg'
+                width={ 32 }
+                height={ 32 }
                 alt="Follow us on Facebook" />
               </a>
             </li>
@@ -33,8 +31,9 @@ export default function MobileNav({ ...props }) {
               <a href="https://www.instagram.com/ganjanacup/">
               <Image
                 priority
-                src={ instagram }
-                width={ 24 }
+                src='/instagram.svg'
+                width={ 32 }
+                height={ 32 }
                 alt="Follow us on Instagram" />
               </a>
             </li>
@@ -42,8 +41,9 @@ export default function MobileNav({ ...props }) {
               <a href="https://lin.ee/Nc0eINQ">
               <Image
                 priority
-                src={ line }
-                width={ 25 }
+                src='/line-bw.png'
+                width={ 33 }
+                height={ 33 }
                 alt="Follow us on Line" />
               </a>
             </li>

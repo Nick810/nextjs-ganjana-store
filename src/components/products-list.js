@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { request } from "../../lib/datocms";
-import ArrowRight from '../svgs/arrow-long-right.svg';
 import shortid from "shortid";
 
 export default function ProductLists() {
@@ -50,8 +49,7 @@ export default function ProductLists() {
   }, []);
 
   return (
-    // items ? 
-      <section className="main__layout">
+      <section className="main__layout bg-black">
         <h2 className="text-3xl mb-10 text-primary font-bold md:mb-16">Special Drop</h2>
         <ul className="grid md:grid-cols-4">
           { data ? data.allProducts.map((item, index) => {
@@ -60,19 +58,21 @@ export default function ProductLists() {
               <li key={ shortid.generate() }>
                 <div className="flex flex-col relative">
                   <div style={{ position: 'absolute', top: '-36px', left: '-24px', zIndex: 1000 }}>
-                    <p className="font-bold text-7xl">{ `0${ index + 1 }` }</p>
+                    <p className="font-bold text-7xl text-gray-400">{ `0${ index + 1 }` }</p>
                   </div>
                   { item.image ? <Image src={{ ...item.image.responsiveImage }} alt="" priority /> : null }
-                  <div className="pt-4 md:px-5">
-                    <p className={ `text-sm mb-1 ${item.availability ? 'text-success' : 'text-error' }`}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-                    <p className='text-sm mb-1'>{ item.otherProps.strainType } | THC:{ item.otherProps.cannabiniod.thc }%</p>
-                    <h3 className="text-primary font-bold mb-2">{ item.name }</h3>
-                    { item.description ? <p className="text-primary">{ item.description }</p> : null }
+                  <div className="border-l mt-4 md:pr-4 flex flex-col">
+                    <div className="md:px-5">
+                      <p className={ `text-sm mb-1 ${item.availability ? 'text-success' : 'text-error' }`}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
+                      <p className='text-sm mb-1 text-gray-400'>{ item.otherProps.strainType } | THC:{ item.otherProps.cannabiniod.thc }%</p>
+                      <h3 className="text-primary text-lg font-bold mb-2 text-primary-content">{ item.name }</h3>
+                      { item.description ? <p className="text-primary-content">{ item.description }</p> : null }
+                    </div>
+                    <Link href={`product/${ item.slug }`} className="flex justify-end text-primary-content font-bold mt-4">
+                      have a peek
+                      <Image src='/arrow-long-right-white.svg' width={ 32 } height={ 32 } priority alt="" className="ml-1"/>
+                    </Link>
                   </div>
-                  <Link href={`product/${ item.slug }`} className="flex justify-end text-primary font-bold mt-4">
-                    have a peek
-                    <Image src={ ArrowRight } width={ 32 } priority alt="" className="ml-1"/>
-                  </Link>
                 </div>
                 <div className={ `divider ${ index === data.allProducts.length - 1 ? 'mb-0' : 'mb-12' }`}></div>
               </li>
