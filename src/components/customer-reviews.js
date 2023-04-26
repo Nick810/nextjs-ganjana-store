@@ -32,13 +32,13 @@ export default function CustomerReviews() {
 
   return (
     <section className="main__layout">
-      <h2 className="text-3xl text-primary font-bold md:mb-4">Words from our customers</h2>
+      <h2 className="text-3xl text-primary font-bold md:mb-4 lg:text-4xl">Words from our customers</h2>
       <ul className="carousel gap-8 py-4 px-8">
         {
           data ? 
           data.map(item => (
             <li key={ shortid.generate() } className="carousel-item card border border-gray-300 shadow-md">
-              <a href={ item.link } className="p-4 border-white">
+              <a href={ item.link } className="p-4 border-primary-content">
                 <div className="flex justify-end">
                   <Image src='/google_g_icon.png' width={ 32 } height={ 32 } priority alt="" />
                 </div>
@@ -58,7 +58,7 @@ export default function CustomerReviews() {
                 <p className="max-w-xs text-primary text-sm">{ item.review.substring(0, 420) + '...' }</p>
 
                 <div className="flex flex-col items-center mt-6 mb-4">
-                  <button className="border-b border-gray-400 flex justify-center text-primary items-center font-bold px-4 py-2">
+                  <button className="border-b border-secondary-content flex justify-center text-primary items-center font-bold px-4 py-2">
                     See full review
                     <Image src='/arrow-long-right.svg' width={ 32 } height={ 32 } priority alt="" className="ml-1 translate-y-1"/>
                   </button>

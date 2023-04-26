@@ -8,6 +8,8 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       webkitallowfullscreen="true"
       mozallowfullscreen="true"
       allowFullScreen
+      style={{ width: '100%' }}
+      className="h-screen"
     />
   </div>
 )

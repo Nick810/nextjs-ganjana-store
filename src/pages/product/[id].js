@@ -14,14 +14,14 @@ const Product = ({ data }) => {
         <h1 className='text-primary font-bold text-3xl mb-2'>{ name }</h1>
         <p className='text-primary'>{ description }</p>
       </div>
-      { 
-        video ? <Video 
-          videoSrcURL={ `https://player.vimeo.com/video/${ productData.video.url.match(/\d+/g) }` }
-          videoTitle={ productData.video.title }
-        /> : null
-      }
       <div className='grid md:grid-cols-2'>
         <div>
+          { 
+            video ? <Video 
+              videoSrcURL={ `https://player.vimeo.com/video/${ productData.video.url.match(/\d+/g) }` }
+              videoTitle={ productData.video.title }
+            /> : null
+          }
           {
             image ? <Image className='mb-4' src={{ ...image.responsiveImage }} priority alt="" /> : null
           }
@@ -47,7 +47,7 @@ const Product = ({ data }) => {
           { flavor.length || flavor ? 
             <>
               <div>
-                <div className='divider'></div>
+                <div className='divider mt-1 mb-1'></div>
                 <h3 className='text-primary font-bold mb-2'>Flavor</h3>
                 <ul className='flex gap-4'>
                   {
@@ -64,7 +64,7 @@ const Product = ({ data }) => {
           { feeling.length || feeling ? 
             <>
               <div>
-                <div className='divider'></div>
+                <div className='divider mt-1 mb-1'></div>
                 <h3 className='text-primary font-bold mb-2'>Feeling</h3>
                 <ul className='flex gap-4'>
                   {
@@ -79,7 +79,7 @@ const Product = ({ data }) => {
             </> : null 
           }
           <div style={{ marginBottom: '24px' }}>
-            <div className='divider'></div>
+            <div className='divider mt-1 mb-1'></div>
             <h3 className='text-primary font-bold mb-2'>Available Sizes</h3>
             <ul style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
               {
@@ -108,14 +108,14 @@ const Product = ({ data }) => {
               <div className="grid md:grid-cols-2 gap-4">
                 <a 
                   href="https://lin.ee/Nc0eINQ" 
-                  className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold text-sm text-primary"
+                  className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold text-sm text-primary-content bg-primary"
                   style={{ width: '100%' }}>
                     <Image src='/line-wb.png' width={ 24 } height={ 24 } priority alt="" />
                     Buy on Line
                 </a>
                 <a 
                   href="http://m.me/ganjanacup"
-                  className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold text-sm text-primary"
+                  className="border border-primary pt-3 pb-3 pl-6 pr-6 flex items-center justify-center gap-2 font-bold text-sm text-primary-content bg-primary"
                   style={{ width: '100%' }}>
                     <Image src='/facebook-messenger.svg' width={ 24 } height={ 24 } priority alt="" />
                     Buy on Messenger

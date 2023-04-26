@@ -59,8 +59,8 @@ export default function AllProducts() {
   return (
     <section className='pl-[5%] mb-4 mt-4'>
       <div className='flex justify-between items-center md:mb-4 pr-[2.5%] lg:pr-[5%]'>
-        <h2 className="text-3xl text-primary font-bold">All Flowers</h2>
-        <Link href="/all-products" className="flex justify-end text-primary items-center font-bold gap-1">
+        <h2 className="text-3xl text-primary font-bold lg:text-4xl">All Flowers</h2>
+        <Link href="/all-products" className="flex justify-end text-primary items-center text-sm font-bold gap-1">
           see all products
           <Image src='/arrow-long-right.svg' width={ 32 } height={ 32 } priority alt="" className="translate-y-1"/>
         </Link>
@@ -72,21 +72,19 @@ export default function AllProducts() {
 
             return (
               <li key={ shortid.generate() } className="carousel-item">
-                {/* <Link href={`product/${ item.slug }`} className='relative' style={{ transform: `translateY(${ (index * 10) + 16 }px)` }}> */}
-                {/* style={{ transform: `translateY(${ (index * 10) + 16 }px)` }} */}
                 <Link href={`product/${ item.slug }`} className='relative'>
                   { item.image ? <div className='overflow-hidden' style={{ maxWidth: '160px', maxHeight: '160px' }}><Image src={{ ...item.image.responsiveImage }} alt="" priority /></div> : null }
                   <div className='pt-1'>
-                    <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-                    <p className='text-sm text-gray-400'>{ strainType } | THC: { cannabiniod.thc }%</p>
+                    <p className={ `text-xs ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
+                    <p className='text-xs text-secondary-content'>{ strainType } | THC: { cannabiniod.thc }%</p>
                     <h3 className='text-primary'>{ item.name }</h3>
-                    { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
+                    { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold text-sm' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
                   </div>
                   {
                     item.availability ? 
                     <button 
-                      className="snipcart-add-item"
-                      style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '4px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
+                      className="snipcart-add-item border border-primary"
+                      style={{ borderRadius: '50%', display: 'flex', padding: '4px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
                       data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
                       data-item-price={ item.price }
                       data-item-description={ item.description }

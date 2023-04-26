@@ -52,7 +52,7 @@ export default function AllCategories() {
   return (
     <section className='pl-[5%]'>
       <div>
-        <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8">All Categories</h2>
+        <h2 className="text-3xl mb-4 text-primary font-bold md:mb-8 lg:text-4xl">All Categories</h2>
         <ul className="carousel rounded-box gap-0 lg:gap-4 overflow-y-hidden">
           {
             data ? 
@@ -61,17 +61,18 @@ export default function AllCategories() {
                   <div 
                     onClick={ () => handleClick(item.title) }
                     key={ shortid.generate() }
-                    className="card w-96 bg-base-100 image-full carousel-item" 
+                    className="card w-96 bg-base-100 image-full carousel-item relative" 
                     style={{ 
                       height: '132px',
                       maxWidth: '156px',
                       clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)', 
                       marginTop: index % 2 !== 0 ? '32px' : '0px',
                       cursor: 'pointer' }}>
-                    <div className='grid place-items-center' style={{ height: 'inherit'}}>
+                    <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.2', zIndex: 1 }}></div>
+                    <div className='grid place-items-center' style={{ height: 'inherit' }}>
                       <figure style={{ gridArea: '1 / 1'}}><Image src={{ ...item.responsiveImage }} alt="" priority /></figure>
                       <div className="card-body text-center justify-center" style={{ gridArea: '1 / 1'}}>
-                        <h2 className="text-primary-content font-bold text-xl">{ item.title }</h2>
+                        <h2 className="text-primary-content font-bold text-xl" style={{ zIndex: 2 }}>{ item.title }</h2>
                       </div>
                     </div>
                   </div>

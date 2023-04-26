@@ -20,12 +20,14 @@ module.exports = {
     themes: [
       {
         myTheme: {
-          "primary": "#000",
-          "primary-content": "#f6f6f6",
+          "primary": "#0a0a0a",
+          "primary-content": "#e1e1e1",
+          "secondary-content": '#656565',
           "secondary": "#f6d860",
-          "success": "#36D399",
+          "success": "#0e9b0e",
           "warning": "#FBBD23",
-          "error": "#F87272",
+          "error": "#e20f0f",
+          "error-dark": "#bc2020"
         }
       }
     ],

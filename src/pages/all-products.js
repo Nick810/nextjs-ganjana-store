@@ -50,8 +50,8 @@ export default function AllProducts({ data }) {
             </div>
             {
               <button 
-                className="snipcart-add-item"
-                style={{ border: '1px solid black', borderRadius: '50%', display: 'flex', padding: '8px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
+                className="snipcart-add-item border border-primary"
+                style={{ borderRadius: '50%', display: 'flex', padding: '8px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
                 data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
                 data-item-price={ item.price }
                 data-item-description={ item.description }
@@ -86,7 +86,7 @@ export default function AllProducts({ data }) {
       <div className='main__layout'>
         <div className='flex justify-between mb-4'>
           <h1 className='text-4xl mb-4 text-primary font-bold'>All Products</h1>
-          <button className='btn bg-primary text-white' onClick={ setShowFilter }>Filter</button>
+          <button className='btn bg-primary text-w' onClick={ setShowFilter }>Filter</button>
         </div>
         <ul className='grid grid-cols-2 md:grid-cols-4 gap-5'>
           { renderProducts() }
