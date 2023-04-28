@@ -3,6 +3,7 @@ import { request } from '../../lib/datocms';
 import Loading from './loading';
 import shortid from 'shortid';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useAppContext } from '@/context';
 import { useRouter } from 'next/router';
 
@@ -58,8 +59,9 @@ export default function AllCategories() {
             data ? 
               data.map((item, index) => (
                 <li key={ index } style={{ filter: 'drop-shadow(4px 4px 0px rgb(246,216,96,.6))'}}>
-                  <div 
-                    onClick={ () => handleClick(item.title) }
+                  <Link 
+                    href="/all-products"
+                    // onClick={ () => handleClick(item.title) }
                     key={ shortid.generate() }
                     className="card w-96 bg-base-100 image-full carousel-item relative" 
                     style={{ 
@@ -75,7 +77,7 @@ export default function AllCategories() {
                         <h2 className="text-primary-content font-bold text-xl" style={{ zIndex: 2 }}>{ item.title }</h2>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </li>
             )) : <Loading />
           }

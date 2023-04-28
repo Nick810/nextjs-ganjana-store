@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/jost": "^4.5.13",
+    "cookies-next": "^2.1.1",
     "daisyui": "^2.51.5",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",

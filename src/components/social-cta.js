@@ -19,7 +19,7 @@ export default function SocialCTA({ datas }) {
     return () => {
       resizeObserver.disconnect();
     }
-  });
+  }, []);
   
   return (
     <section style={{ paddingLeft: '5%' }} className="bg-primary">

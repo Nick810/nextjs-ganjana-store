@@ -1,4 +1,4 @@
-import { navigationMenu } from '../../siteconfig.json';
+import {navigationMenu} from '../../siteconfig.json';
 import Link from 'next/link';
 import shortid from 'shortid';
 

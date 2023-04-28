@@ -15,7 +15,7 @@ export default function Home({ data }) {
   
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Ganjana Store</title>
         <meta property="og:title" content="Ganjana Store" key="title" />
         <meta property="og:description" content="Ganjana Store" key="description" />
@@ -29,9 +29,9 @@ export default function Home({ data }) {
         <meta name="description" content="Ganjana Store" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://www.datocms-assets.com/95279/1678549877-ganjana_logo_only.png" />
-      </Head>
+      </Head> */}
       <>
-        <Hero heading={ hero[0].heading } ctaTitle={ hero[0].ctaTitle } image={ hero[0].image }/>
+        <Hero heading={ hero[0].heading } ctaTitle={ hero[0].ctaTitle } image={ hero[0].image } desktopImage={ hero[0].desktopImage } />
         <SocialCTA datas={ socialCtas } />
         <Divider num={ 12 } />
         <CustomerReviews />
@@ -57,6 +57,20 @@ export async function getStaticProps() {
       hero: allHeros(filter: {heading: {eq: "Finest Crafty Buds"}}) {
         heading
         ctaTitle
+        desktopImage {
+          responsiveImage(imgixParams: {fit: fill, auto: format, q: 75}) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            height
+            aspectRatio
+            alt
+            title
+            base64
+          }
+        }
         image {
           responsiveImage(imgixParams: {fit: fill, auto: format}) {
             srcSet
@@ -95,7 +109,7 @@ export async function getStaticProps() {
     }`
   ;
   const data = await request({ query: HERO_QUERY });
-
+  
   return {
     props: { data }
   }

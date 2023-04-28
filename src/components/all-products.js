@@ -67,7 +67,7 @@ export default function AllProducts() {
       </div>
       <ul className='carousel gap-5 pt-4'>
         {
-          data ? data.allProducts.map((item, index) => {
+          data ? data.allProducts.map((item) => {
             const { cannabiniod, buyingOptions, strainType } = item.otherProps;
 
             return (
@@ -82,17 +82,17 @@ export default function AllProducts() {
                   </div>
                   {
                     item.availability ? 
-                    <button 
-                      className="snipcart-add-item border border-primary"
-                      style={{ borderRadius: '50%', display: 'flex', padding: '4px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
-                      data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
-                      data-item-price={ item.price }
-                      data-item-description={ item.description }
-                      data-item-image={ item.image.url }
-                      data-item-url="/"
-                      data-item-name={ item.name }
-                      data-item-custom1-name="Size"
-                      data-item-custom1-options={ buyingOptions }
+                    <button
+                      // href="https://lin.ee/Nc0eINQ"
+                      className="snipcart-add-item border-2 border-primary-content rounded-[50%] flex p-2 top-[-16px] right-[-16px] absolute bg-primary z-[1500]"
+                      // data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
+                      // data-item-price={ item.price }
+                      // data-item-description={ item.description }
+                      // data-item-image={ item.image.url }
+                      // data-item-url="/"
+                      // data-item-name={ item.name }
+                      // data-item-custom1-name="Size"
+                      // data-item-custom1-options={ buyingOptions }
                       >
                         <Image src='/basket.svg' width={ 24 } height={ 24 } priority alt="" />
                     </button> : null

@@ -1,5 +1,5 @@
-import shortid from 'shortid';
-import { navigationMenu } from '../../siteconfig.json'; 
+import {navigationMenu} from '../../siteconfig.json';
+import shortid from 'shortid'; 
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,35 +17,35 @@ export default function Footer() {
           }
         </ul>
         <div className='md:border-l-2'>
-          <h3 className='font-bold text-2xl text-secondary-content md:hidden'>Our Location</h3>
+          <h3 className='font-bold text-xl text-secondary-content md:hidden'>Our Location</h3>
           <ul className='flex flex-col gap-4 md:pl-8 md:h-40'>
             <li key={ shortid.generate() }>
-              <Link href="/" className='flex flex-col justify-center items-center md:items-start'>
+              <a href="https://goo.gl/maps/SRgF5fceQavH7Tj48" className='flex flex-col justify-center items-center md:items-start'>
                 <Image
                   priority
-                  width={ 40 }
-                  height={ 40 }
+                  width={ 32 }
+                  height={ 32 }
                   src='/pin_fill.svg'
                   alt="Visit us at 17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230" />
-                <p className='font-normal text-primary-content md:text-left'>17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230</p>
-              </Link>
+                <p className='font-normal text-primary-content md:text-left mt-1'>17/12 Kluai Mai Alley, Chorakhe Bua, Lat Phrao, Bangkok 10230</p>
+              </a>
             </li>
             <li key={ shortid.generate() }>
-              <Link href="/" className='flex flex-col justify-center md:items-start items-center'>
+              <a href="/tel:0960522070" className='flex flex-col justify-center md:items-start items-center'>
                 <Image
                   priority
                   src='/phone_fill.svg'
-                  width={ 24 }
-                  height={ 24 }
+                  width={ 20 }
+                  height={ 20 }
                   className='mb-2'
                   alt="Call us on 096-052-2070" />
                 <p className='font-normal text-primary-content'>096-052-2070</p>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
         <div className='md:border-l-2 md:h-40'>
-          <h3 className='font-bold text-2xl text-secondary-content md:hidden mb-2'>Get in Touch</h3>
+          <h3 className='font-bold text-xl text-secondary-content md:hidden mb-2'>Get in Touch</h3>
           <ul className='flex justify-center md:flex-col gap-4 md:pl-8'>
             <li key={ shortid.generate() }>
               <a href="https://www.facebook.com/ganjanacup/">

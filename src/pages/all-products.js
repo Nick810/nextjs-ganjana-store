@@ -34,32 +34,32 @@ export default function AllProducts({ data }) {
     for (const item of allProducts) {
       const { otherProps } = item;
       const product = () => ( 
-        <li key={ shortid.generate() } className=''>
-          <Link href={ `/product/${ item.slug }` } className='relative'>
-            <div style={{ overflow: 'hidden', position: 'relative' }}>
-              <div style={{ paddingTop: '100%'}}></div>
+        <li key={ shortid.generate() } className='cursor-pointer flex'>
+          <Link href={ `/product/${ item.slug }` } className='relative flex-1'>
+            <div className="overflow-hidden relative">
+              <div className="pt-[100%]"></div>
               {
                 item.image ? <Image src={{ ...item.image.responsiveImage }} priority alt="" style={ imgStyle } /> : null
               }
             </div>
             <div className='pt-3 pb-3'>
               <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-              <p className='text-sm text-gray-400'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
-              <h3 className='text-primary'>{ item.name }</h3>
-              { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
+              <p className='text-sm text-secondary-content font-normal'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
+              <h3 className='text-md font-bold text-primary'>{ item.name }</h3>
+              { item.price ? <p className='text-primary font-normal'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
             </div>
             {
               <button 
-                className="snipcart-add-item border border-primary"
-                style={{ borderRadius: '50%', display: 'flex', padding: '8px', position: 'absolute', top: '-16px', right: '-16px', backgroundColor: '#f6f6f6', zIndex: '150'  }}
-                data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
-                data-item-price={ item.price }
-                data-item-description={ item.description }
-                data-item-image={ item.image.url ? item.image.url : '' }
-                data-item-url="/"
-                data-item-name={ item.name }
-                data-item-custom1-name="Size"
-                data-item-custom1-options={ otherProps.buyingOptions }
+                // href="https://lin.ee/Nc0eINQ"
+                className="snipcart-add-item border-2 border-primary-content rounded-[50%] flex p-2 top-[-16px] right-[-16px] absolute bg-primary z-[150]"
+                // data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
+                // data-item-price={ item.price }
+                // data-item-description={ item.description }
+                // data-item-image={ item.image.url ? item.image.url : '' }
+                // data-item-url="/"
+                // data-item-name={ item.name }
+                // data-item-custom1-name="Size"
+                // data-item-custom1-options={ otherProps.buyingOptions }
                 >
                   <Image src='/basket.svg' width={ 24 } height={ 24 } priority alt="" />
               </button> ?? item.availability
@@ -85,8 +85,8 @@ export default function AllProducts({ data }) {
     <div className='pt-8 pb-8'>
       <div className='main__layout'>
         <div className='flex justify-between mb-4'>
-          <h1 className='text-4xl mb-4 text-primary font-bold'>All Products</h1>
-          <button className='btn bg-primary text-w' onClick={ setShowFilter }>Filter</button>
+          <h1 className='text-3xl mb-4 text-primary font-bold lg:text-4xl'>All Products</h1>
+          <button className='btn bg-primary text-primary-content' onClick={ setShowFilter }>Filter</button>
         </div>
         <ul className='grid grid-cols-2 md:grid-cols-4 gap-5'>
           { renderProducts() }
