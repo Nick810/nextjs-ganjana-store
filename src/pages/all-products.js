@@ -44,7 +44,7 @@ export default function AllProducts({ data }) {
             </div>
             <div className='pt-3 pb-3'>
               <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-              <p className='text-sm text-secondary-content font-normal'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p>
+              { item.otherProps ? <p className='text-sm text-secondary-content font-normal'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p> : null }
               <h3 className='text-md font-bold text-primary'>{ item.name }</h3>
               { item.price ? <p className='text-primary font-normal'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
             </div>
