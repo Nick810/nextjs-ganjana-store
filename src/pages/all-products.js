@@ -83,7 +83,7 @@ export default function AllProducts({ data }) {
 
   return (
     <div className='pt-8 pb-8'>
-      <div className='main__layout'>
+      <div className='main__layout min-h-screen'>
         <div className='flex justify-between mb-4'>
           <h1 className='text-3xl mb-4 text-primary font-bold lg:text-4xl'>All Products</h1>
           <button className='btn bg-primary text-primary-content' onClick={ setShowFilter }>Filter</button>

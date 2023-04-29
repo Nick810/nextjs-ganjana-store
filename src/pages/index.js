@@ -17,8 +17,8 @@ export default function Home({ data }) {
     <>
       <Head>
         <title>Ganjana Store</title>
-        <meta property="og:title" content="Ganjana Store" key="title" />
-        <meta name="twitter:title" content="Ganjana Store" />
+        <meta property="og:title" content="Ganjana Store — Finest Crafty Buds" key="title" />
+        <meta name="twitter:title" content="Ganjana Store — Finest Crafty Buds" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <>
