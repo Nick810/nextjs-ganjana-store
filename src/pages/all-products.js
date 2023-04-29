@@ -103,7 +103,7 @@ export async function getStaticProps() {
       categories: allProducts {
         category
       }
-      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}}, first: "20") {
+      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}, category: {matches: {pattern: "Flowers"}}}, first: "40") {
         availability
         name
         image {
