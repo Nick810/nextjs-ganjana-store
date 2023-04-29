@@ -133,7 +133,7 @@ export default Product
 export async function getStaticPaths() {
   const allProductsSlugQuery = `
     query AllProductsPage {
-      allProducts {
+      allProducts(first: "40") {
         slug
       }
     }
@@ -150,7 +150,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const queryBySlug = `
     query ProductBySlug {
-      allProducts(filter: {slug: {eq: "${ params.id }"}}) {
+      allProducts(filter: {slug: {eq: "${ params.id }"}}, first: "40") {
         availability
         description
         name
@@ -196,6 +196,7 @@ export async function getStaticProps({ params }) {
   const data = await request({ query: queryBySlug });
   // Fetch necessary data for the blog post using params.id
   return {
-    props: { data }
+    props: { data },
+    revalidate: 60,
   }
 }

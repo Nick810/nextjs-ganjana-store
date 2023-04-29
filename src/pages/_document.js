@@ -7,16 +7,15 @@ export default function Document() {
         {/* <link rel="preconnect" href="<https://app.snipcart.com>"/>
         <link rel="preconnect" href="<https://cdn.snipcart.com>"/>
         <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" /> */}
-        {/* <link rel="shortcut icon" href="../public/favicon.ico" /> */}
         <meta property="og:description" content="Ganjana Store" key="description" />
         <meta property="og:image" content="/ganjana_meta.jpg" />
         <meta property="og:url" content="https://ganjana.org" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://ganjana.org" />
         <meta name="twitter:description" content="Ganjana Store" />
-        <meta name="twitter:image" content="/ganjana_meta.jpg" />
+        <meta name="twitter:image" content="https://www.datocms-assets.com/95279/1682709905-hero-img.jpg" />
         <meta name="description" content="Ganjana Store" />
-        <link rel="icon" href="https://www.datocms-assets.com/95279/1678549877-ganjana_logo_only.png" />
+        <link rel=" shortcut icon" href="https://www.datocms-assets.com/95279/1678549877-ganjana_logo_only.png" />
       </Head>
       <body>
         <Main />
