@@ -15,21 +15,12 @@ export default function Home({ data }) {
   
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Ganjana Store</title>
         <meta property="og:title" content="Ganjana Store" key="title" />
-        <meta property="og:description" content="Ganjana Store" key="description" />
-        <meta property="og:image" content="/ganjana_meta.jpg" />
-        <meta property="og:url" content="https://ganjana.org" />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ganjana Store" />
-        <meta name="twitter:url" content="https://ganjana.org" />
-        <meta name="twitter:description" content="Ganjana Store" />
-        <meta name="twitter:image" content="/ganjana_meta.jpg" />
-        <meta name="description" content="Ganjana Store" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="https://www.datocms-assets.com/95279/1678549877-ganjana_logo_only.png" />
-      </Head> */}
+      </Head>
       <>
         <Hero heading={ hero[0].heading } ctaTitle={ hero[0].ctaTitle } image={ hero[0].image } desktopImage={ hero[0].desktopImage } />
         <SocialCTA datas={ socialCtas } />
