@@ -16,6 +16,7 @@ export default function ProductLists() {
         const ALLNEWDROPS_QUERY = `
           query AllNewDrops {
             allProducts(filter: {inCollection: {matches: {pattern: "New Drop"}}}) {
+              availability
               name
               image {
                 responsiveImage(imgixParams: { fit: fill, auto: format }) {
@@ -80,7 +81,7 @@ export default function ProductLists() {
                   { item.image ? <Image src={{ ...item.image.responsiveImage }} alt="" priority ref={ index === 0 ? imageRef : null } /> : null }
                   <div className="lg:border-l mt-4 md:pr-4 flex flex-col border-secondary-content">
                     <div className="md:px-5">
-                      <p className={ `text-sm mb-1`} style={{ color: `${item.availability ? 'text-success' : '#bc2020'}` }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
+                      <p className={ `text-sm mb-1 ${item.availability ? 'text-success' : 'text-error'} `} style={{ color: `${item.availability ? 'text-success' : '#bc2020'}` }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
                       <p className='text-sm mb-1 text-secondary-content font-normal'>{ item.otherProps.strainType } | THC:{ item.otherProps.cannabiniod.thc }%</p>
                       <h3 className="text-xl font-bold mb-2 text-primary-content">{ item.name }</h3>
                       { item.description ? <p className="text-primary-content font-normal">{ item.description }</p> : null }
