@@ -13,7 +13,7 @@ export default function AllProducts() {
       try {
         const ALLPRODUCTS_QUERY = `
           query AllProducts($limit: IntType) {
-            allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}}, first: $limit) {
+            allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}}, first: $limit, orderBy: _createdAt_DESC) {
               availability
               name
               image {
@@ -73,7 +73,10 @@ export default function AllProducts() {
             return (
               <li key={ shortid.generate() } className="carousel-item">
                 <Link href={`product/${ item.slug }`} className='relative'>
-                  { item.image ? <div className='overflow-hidden' style={{ maxWidth: '160px', maxHeight: '160px' }}><Image src={{ ...item.image.responsiveImage }} alt="" priority /></div> : null }
+                  { item.image ? <div className='overflow-hidden max-w-[240px]'>
+                    <Image src={{ ...item.image.responsiveImage }} alt="" priority />
+                  </div> : null 
+                  }
                   <div className='pt-1'>
                     <p className={ `text-xs ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
                     <p className='text-xs text-secondary-content'>{ strainType } | THC: { cannabiniod.thc }%</p>
@@ -83,16 +86,7 @@ export default function AllProducts() {
                   {
                     item.availability ? 
                     <button
-                      // href="https://lin.ee/Nc0eINQ"
-                      className="snipcart-add-item border-2 border-primary-content rounded-[50%] flex p-2 top-[-16px] right-[-16px] absolute bg-primary z-[1500]"
-                      // data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
-                      // data-item-price={ item.price }
-                      // data-item-description={ item.description }
-                      // data-item-image={ item.image.url }
-                      // data-item-url="/"
-                      // data-item-name={ item.name }
-                      // data-item-custom1-name="Size"
-                      // data-item-custom1-options={ buyingOptions }
+                      className="border-2 border-primary-content rounded-[50%] flex p-2 top-[-16px] right-[-16px] absolute bg-primary z-[1500]"
                       >
                         <Image src='/basket.svg' width={ 24 } height={ 24 } priority alt="" />
                     </button> : null

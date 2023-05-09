@@ -50,16 +50,7 @@ export default function AllProducts({ data }) {
             </div>
             {
               <button 
-                // href="https://lin.ee/Nc0eINQ"
-                className="snipcart-add-item border-2 border-primary-content rounded-[50%] flex p-2 top-[-16px] right-[-16px] absolute bg-primary z-[150]"
-                // data-item-id={ item.name.replaceAll(' ', '-').toLowerCase() }
-                // data-item-price={ item.price }
-                // data-item-description={ item.description }
-                // data-item-image={ item.image.url ? item.image.url : '' }
-                // data-item-url="/"
-                // data-item-name={ item.name }
-                // data-item-custom1-name="Size"
-                // data-item-custom1-options={ otherProps.buyingOptions }
+                className="border-2 border-primary-content rounded-[50%] flex p-2 top-[-16px] right-[-16px] absolute bg-primary z-[150]"
                 >
                   <Image src='/basket.svg' width={ 24 } height={ 24 } priority alt="" />
               </button> ?? item.availability
@@ -103,7 +94,7 @@ export async function getStaticProps() {
       categories: allProducts {
         category
       }
-      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}, category: {matches: {pattern: "Flowers"}}}, first: "40") {
+      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}, category: {matches: {pattern: "Flowers"}}}, first: "60", orderBy: _createdAt_DESC) {
         availability
         name
         image {

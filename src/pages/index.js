@@ -102,6 +102,6 @@ export async function getStaticProps() {
   const data = await request({ query: HERO_QUERY });
   
   return {
-    props: { data }
+    props: { data, revalidate: 60 }
   }
 }

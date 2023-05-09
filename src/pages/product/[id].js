@@ -5,8 +5,8 @@ import shortid from 'shortid';
 
 const Product = ({ data }) => {
   const productData  = data.allProducts[0];
-  const { availability, description, image, images, name, otherProps, price, video } = productData;
-  const { availableSizes, buyingOptions, cannabiniod, cultivatedBy, feeling, flavor, strainType } = otherProps
+  const { availability, description, image, images, name, otherProps, video } = productData;
+  const { availableSizes, cannabiniod, cultivatedBy, feeling, flavor, strainType } = otherProps
   
   return (
     <div className='pt-8 pb-8'>
@@ -39,11 +39,30 @@ const Product = ({ data }) => {
               cultivatedBy ? 
               <div className="flex gap-4">
                 { cultivatedBy.map(item => (
-                  <Image src={ item } alt="" key={ shortid.generate() } height={ 48 } width={ 48 } />
+                  <div key={ shortid.generate() } className='w-[48px] h-[48px] relative'>
+                    <Image src={ item } alt="" className='object-cover' fill />
+                  </div>
                 ))}
               </div> : null
             }
           </div>
+          { cannabiniod.terpenes.length ? 
+            <>
+              <div>
+                <div className='divider mt-1 mb-1'></div>
+                <h3 className='text-primary font-bold mb-2'>Terpenes</h3>
+                <ul className='flex gap-4'>
+                  {
+                    flavor.map(item => (
+                      <li key={ shortid.generate() } className='text-primary border border-secondary p-2'>
+                        { item }
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </> : null 
+          }
           { flavor.length || flavor ? 
             <>
               <div>
@@ -89,22 +108,7 @@ const Product = ({ data }) => {
               }
             </ul>
           </div>
-          {/* <p className='text-primary mb-2'>*Select your desired size after adding item to cart</p> */}
             <div className='flex flex-col gap-4'>
-              {/* <button 
-                className={ `snipcart-add-item ${ availability ? '' : 'sold-out' } text-primary-content bg-primary flex justify-center gap-2 pt-3 pb-3 pl-6 pr-6` }
-                data-item-id={ name.replaceAll(' ', '-').toLowerCase() }
-                data-item-price={ price }
-                data-item-description={ description }
-                data-item-image={ image.url }
-                data-item-url={ `/${ name.replaceAll(' ', '_').toLowerCase() }` }
-                data-item-name={ name }
-                data-item-custom1-name="Size"
-                data-item-custom1-options={ buyingOptions }
-                >
-                  { availability ? `Add to cart` : `Sold out` }
-                  <div className='bg-primary-content rounded-full'><Image src={ Basket } priority alt="" /></div>
-              </button> */}
               <div className="grid md:grid-cols-2 gap-4">
                 <a 
                   href="https://lin.ee/Nc0eINQ" 
@@ -133,7 +137,7 @@ export default Product
 export async function getStaticPaths() {
   const allProductsSlugQuery = `
     query AllProductsPage {
-      allProducts(first: "40") {
+      allProducts(first: "60") {
         slug
       }
     }
@@ -150,7 +154,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const queryBySlug = `
     query ProductBySlug {
-      allProducts(filter: {slug: {eq: "${ params.id }"}}, first: "40") {
+      allProducts(filter: {slug: {eq: "${ params.id }"}}, first: "60") {
         availability
         description
         name
@@ -196,7 +200,6 @@ export async function getStaticProps({ params }) {
   const data = await request({ query: queryBySlug });
   // Fetch necessary data for the blog post using params.id
   return {
-    props: { data },
-    revalidate: 60,
+    props: { data, revalidate: 60 }
   }
 }

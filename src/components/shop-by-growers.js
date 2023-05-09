@@ -58,7 +58,9 @@ export default function ShopByGrowers() {
           data.allGrowers.map(item => (
             <li key={ shortid.generate() } className="carousel-item">
               <Link href={ `/all-products` } onClick={ () => handleSetFilter(item.name) }>
-                <div className="overflow-hidden" style={{ width: '120px', height: '120px'}}><Image src={{ ...item.avartar.responsiveImage }} width={ 120 } height={ 120 } priority alt={ `Shop By ${item.name}` } /></div>
+                <div className="overflow-hidden w-[120px] h-[120px] relative">
+                  <Image src={{ ...item.avartar.responsiveImage }} fill priority alt={ `Shop By ${item.name}` } className="object-cover" />
+                </div>
               </Link>
             </li>
           )) : <li><Loading /></li>

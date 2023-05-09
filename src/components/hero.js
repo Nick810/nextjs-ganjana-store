@@ -8,9 +8,9 @@ export default function Hero({ ...props }) {
     <section>
       <div className="grid">
         <div style={{ gridArea: "1/1" }} className="grid lg:grid-cols-3">
-          <Image src={{ ...image.responsiveImage }} alt="" priority  style={{ height: '80vh', objectFit: 'cover' }} className="lg:hidden"/>
+          <Image placeholder='blur' blurDataURL="https://www.datocms-assets.com/95279/1678549877-ganjana_logo_only.png" src={{ ...image.responsiveImage }} alt="" priority  style={{ height: '80vh', objectFit: 'cover' }} className="lg:hidden"/>
           <div className="w-[100vw] h-[100vh] translate-y-4 hidden lg:block">
-            <Image src={{ ...desktopImage.responsiveImage }} alt="" priority fill className="object-cover"/>
+            <Image placeholder='blur' blurDataURL="data:image/jpeg;base64L17-7qE4?tNI$+%1jut600xW9IxZ" src={{ ...desktopImage.responsiveImage }} alt="" priority fill className="object-cover"/>
           </div>
         </div>
         <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.25', gridArea: '1/1' }}></div>
