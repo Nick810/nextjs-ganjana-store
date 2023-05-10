@@ -53,7 +53,7 @@ const Product = ({ data }) => {
                 <h3 className='text-primary font-bold mb-2'>Terpenes</h3>
                 <ul className='flex gap-4'>
                   {
-                    flavor.map(item => (
+                    cannabiniod.terpenes.map(item => (
                       <li key={ shortid.generate() } className='text-primary border border-secondary p-2'>
                         { item }
                       </li>
