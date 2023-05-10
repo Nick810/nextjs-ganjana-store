@@ -68,7 +68,7 @@ export default function AllProducts() {
       <ul className='carousel gap-5 pt-4'>
         {
           data ? data.allProducts.map((item) => {
-            const { cannabiniod, buyingOptions, strainType } = item.otherProps;
+            const { cannabiniod, strainType } = item.otherProps;
 
             return (
               <li key={ shortid.generate() } className="carousel-item">
