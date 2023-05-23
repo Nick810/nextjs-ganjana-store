@@ -78,7 +78,12 @@ export default function ProductLists() {
                   <div style={{ position: 'absolute', top: '-36px', left: '-24px', zIndex: 100 }}>
                     <p className="font-bold text-7xl drop-shadow-md shadow-primary" style={{ color: '#f6f6f6' }}>{ `0${ index + 1 }` }</p>
                   </div>
-                  { item.image ? <Image src={{ ...item.image.responsiveImage }} alt="" priority ref={ index === 0 ? imageRef : null } /> : null }
+                  { item.image ? 
+                    <div>
+                      <Image src={{ ...item.image.responsiveImage }} alt="" ref={ index === 0 ? imageRef : null } /> 
+                    </div>
+                    : null 
+                  }
                   <div className="lg:border-l mt-4 md:pr-4 flex flex-col border-secondary-content">
                     <div className="md:px-5">
                       <p className={ `text-sm mb-1 ${item.availability ? 'text-success' : 'text-error'} `} style={{ color: `${item.availability ? 'text-success' : '#bc2020'}` }}>{ item.availability ? 'In Stock' : 'Out of stock' }</p>

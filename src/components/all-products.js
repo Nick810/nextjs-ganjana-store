@@ -3,6 +3,7 @@ import { request } from '../../lib/datocms';
 import Image from 'next/image';
 import Link from 'next/link';
 import shortid from "shortid";
+import { Blurhash } from 'react-blurhash';
 
 export default function AllProducts() {
   const [data, setData] = useState();
@@ -32,7 +33,6 @@ export default function AllProducts() {
                 url
               }
               otherProps
-              price
               description
               video {
                 thumbnailUrl
@@ -73,15 +73,22 @@ export default function AllProducts() {
             return (
               <li key={ shortid.generate() } className="carousel-item">
                 <Link href={`product/${ item.slug }`} className='relative'>
-                  { item.image ? <div className='overflow-hidden max-w-[240px]'>
-                    <Image src={{ ...item.image.responsiveImage }} alt="" priority />
-                  </div> : null 
+                  { item.image ? 
+                    <div className='overflow-hidden max-w-[240px] grid'>
+                      <Blurhash
+                        style={{ width: '100%', height: '100%', gridArea: "1/1" }}
+                        hash="L02rjaay00oL%KfjM|f657j@?Gay"
+                        resolutionX={32}
+                        resolutionY={32}
+                        punch={1}
+                      />
+                      <Image src={{ ...item.image.responsiveImage }} alt="" className="fadeIn" style={{ gridArea: "1/1" }} />
+                    </div> : null 
                   }
                   <div className='pt-1'>
                     <p className={ `text-xs ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
                     <p className='text-xs text-secondary-content'>{ strainType } | THC: { cannabiniod.thc }%</p>
                     <h3 className='text-primary'>{ item.name }</h3>
-                    { item.price ? <p className='text-primary font-bold'>{ item.price.toLocaleString() }.-</p> : <p className='text-warning font-bold text-sm' style={{ maxWidth: '140px'}}>Please contact us for pricing</p> }
                   </div>
                   {
                     item.availability ? 

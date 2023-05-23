@@ -9,6 +9,7 @@ import AllEvents from '@/components/all-events'
 import { request  } from '../../lib/datocms'
 import Divider from '@/components/divider'
 import SocialCTA from '@/components/social-cta'
+import { useQuerySubscription } from 'react-datocms/use-query-subscription'
 
 export default function Home({ data }) {
   const { hero, socialCtas } = data;

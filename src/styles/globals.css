@@ -38,6 +38,20 @@ h3 {
 .c-divider {
   border-bottom: 1px solid #e5e7eb;
 }
+
+.fadeIn {
+  -webkit-animation: .7s ease 0s normal forwards 1 fadeIn;
+  animation: .7s ease 0s normal forwards 1 fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import shortid from "shortid"
 import Image from "next/image"
 import Link from "next/link";
+import { Blurhash } from "react-blurhash";
 
 export default function SocialCTA({ datas }) {
   const [large, setLarge] = useState(false);
@@ -27,8 +28,15 @@ export default function SocialCTA({ datas }) {
         {
           datas.map(item => (
             <li key={shortid.generate()} className="carousel-item flex flex-col">
-              <div className="overflow-hidden" style={{ width: `${ large ? '480px' : '280px' }`, height: `${ large ? '200px' : '160px' }` }}>
-                <Image src={{ ...item.image.responsiveImage }}  alt="" priority />
+              <div className="overflow-hidden grid" style={{ width: `${ large ? '480px' : '280px' }`, height: `${ large ? '200px' : '160px' }` }}>
+                <Blurhash
+                  style={{ width: '100%', height: '100%', gridArea: "1/1" }}
+                  hash="L02rjaay00oL%KfjM|f657j@?Gay"
+                  resolutionX={32}
+                  resolutionY={32}
+                  punch={1}
+                />
+                <Image src={{ ...item.image.responsiveImage }} alt="" className="fadeIn" style={{ gridArea: "1/1" }} />
               </div>
               <div className="py-1 flex flex-col justify-center items-center">
                 <h3 className="text-primary-content font-bold text-xl mt-3 lg:text-2xl">{ item.heading }</h3>
