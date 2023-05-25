@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta property="og:description" content="Ganjana Store" key="description" />
+        <meta property="og:description" content="Discover a world of locally-grown cannabis products at Ganjana store. Rest assured, the finest selection of locally-sourced cannabis products while supporting our community's farmers." key="description" />
         <meta property="og:image" content="/ganjana_meta.jpg" />
         <meta property="og:url" content="https://ganjana.org" />
         <meta name="twitter:card" content="summary_large_image" />
