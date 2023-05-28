@@ -45,7 +45,7 @@ export default function Home({ data }) {
 export async function getStaticProps() {
   const HERO_QUERY = `
     query Hero {
-      hero: allHeros(filter: {heading: {eq: "Finest Crafty Buds"}}) {
+      hero: allHeros(filter: {heading: {eq: "Finest Craft Buds"}}) {
         heading
         ctaTitle
         desktopImage {
