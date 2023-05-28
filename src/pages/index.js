@@ -78,7 +78,7 @@ export async function getStaticProps() {
           url
         }
       }
-      socialCtas: allHeros(filter: {heading: {notMatches: {pattern: "Finest Crafty Buds"}}}) {
+      socialCtas: allHeros(filter: {heading: {notMatches: {pattern: "Finest Craft Buds"}}}) {
         heading
         ctaTitle
         image {
