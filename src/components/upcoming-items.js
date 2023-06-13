@@ -38,7 +38,7 @@ export default function UpcomingItems() {
 
   return (
     <section className="grid relative">
-      { background.url ? <Image src={ background.url } alt="" fill class="object-cover" style={{ gridArea: "1/1" }}/> : null }
+      { background.url ? <Image src={ background.url } alt="" fill priority class="object-cover" style={{ gridArea: "1/1" }}/> : null }
       <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)', gridArea: "1/1", zIndex: '3' }}></div>
       <div style={{ gridArea: "1/1"}} className="main__layout z-10">
         <Divider num={ 12 } />
