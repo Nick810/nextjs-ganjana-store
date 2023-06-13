@@ -2,10 +2,12 @@ import Image from "next/image"
 import { request } from '../../lib/datocms';
 import { Blurhash } from "react-blurhash";
 import { useEffect, useState } from "react";
+import Divider from "./divider";
 import shortid from "shortid";
 
 export default function UpcomingItems() {
   const [data, setData] = useState();
+  const [background, setBackground] = useState({url: '', filename: ''});
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -17,10 +19,15 @@ export default function UpcomingItems() {
               filename
               url
             }
+            background: allUploads(filter: {filename: {matches: {pattern: "seed-background"}}}) {
+              filename
+              url
+            }
           }`
         ;
         const data = await request({ query: ALLFILES });
         
+        setBackground(data.background[0]);
         setData(data.allUploads);
       } catch(err) {
         setError(err.message);
@@ -30,25 +37,31 @@ export default function UpcomingItems() {
   }, []);
 
   return (
-    <section className="main__layout">
-      <h2 className="text-3xl text-primary font-bold mb-4 lg:text-4xl">Upcoming Items</h2>
-      <ul className="gap-4 carousel">
-        {
-          data ? 
-          data.map((item, index) => (
-            <li key={shortid.generate()} className="grid relative carousel-item card">
-              <Blurhash
-                style={{ height: '240px', width: '240px', gridArea: "1/1" }}
-                hash="L02rjaay00oL%KfjM|f657j@?Gay"
-                resolutionX={32}
-                resolutionY={32}
-                punch={1}
-              />
-              <Image src={ item.url } alt="" style={{ gridArea: "1/1", zIndex: '2', transform: index === 0 ? 'translateY(-69px)' : 'none'}} width={ 240 } height={ 240 } className="object-contain h-[100%] fadeIn" />
-            </li>
-          )) : null
-        }
-      </ul>
+    <section className="grid relative">
+      { background.url ? <Image src={ background.url } alt="" fill class="object-cover" style={{ gridArea: "1/1" }}/> : null }
+      <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)', gridArea: "1/1", zIndex: '3' }}></div>
+      <div style={{ gridArea: "1/1"}} className="main__layout z-10">
+        <Divider num={ 12 } />
+        <h2 className="text-3xl text-primary-content font-bold mb-4 lg:text-4xl">Upcoming Items</h2>
+        <ul className="gap-4 carousel">
+          {
+            data ? 
+            data.map((item, index) => (
+              <li key={shortid.generate()} className="grid relative carousel-item card">
+                <Blurhash
+                  style={{ height: '240px', width: '240px', gridArea: "1/1" }}
+                  hash="L02rjaay00oL%KfjM|f657j@?Gay"
+                  resolutionX={32}
+                  resolutionY={32}
+                  punch={1}
+                />
+                <Image src={ item.url } alt="" style={{ gridArea: "1/1", zIndex: '2', transform: index === 0 ? 'translateY(-69px)' : 'none'}} width={ 240 } height={ 240 } className="object-contain h-[100%] fadeIn" />
+              </li>
+            )) : null
+          }
+        </ul>
+        <Divider num={ 12 } />
+      </div>
     </section>
   )
 }

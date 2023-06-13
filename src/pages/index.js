@@ -25,7 +25,6 @@ export default function Home({ data }) {
       <>
         <Hero heading={ hero[0].heading } ctaTitle={ hero[0].ctaTitle } image={ hero[0].image } desktopImage={ hero[0].desktopImage } />
         <SocialCTA datas={ socialCtas } />
-        <Divider num={ 12 } />
         <UpcomingItems />
         <Divider num={ 12 } />
         <CustomerReviews />
