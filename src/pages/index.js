@@ -9,6 +9,7 @@ import AllEvents from '@/components/all-events'
 import { request  } from '../../lib/datocms'
 import Divider from '@/components/divider'
 import SocialCTA from '@/components/social-cta'
+import UpcomingItems from '@/components/upcoming-items'
 
 export default function Home({ data }) {
   const { hero, socialCtas } = data;
@@ -24,6 +25,8 @@ export default function Home({ data }) {
       <>
         <Hero heading={ hero[0].heading } ctaTitle={ hero[0].ctaTitle } image={ hero[0].image } desktopImage={ hero[0].desktopImage } />
         <SocialCTA datas={ socialCtas } />
+        <Divider num={ 12 } />
+        <UpcomingItems />
         <Divider num={ 12 } />
         <CustomerReviews />
         <Divider num={ 12 } />
