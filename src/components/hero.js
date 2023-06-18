@@ -32,7 +32,7 @@ export default function Hero({ ...props }) {
             <Image src={{ ...desktopImage.responsiveImage }} alt="" priority fill className="object-cover fadeIn"/>
           </div>
         </div>
-        <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.25)', gridArea: "1/1", zIndex: '3' }}></div>
+        <div className="lg:translate-y-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.25)', gridArea: "1/1", zIndex: '3' }}></div>
         <div style={{  gridArea: "1/1", zIndex: '3' }}  className="main__layout grid place-items-center relative">
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-lg">
