@@ -39,7 +39,6 @@ export default function UpcomingItems() {
         setError(err.message);
       }
     }
-    console.log(slugs)
     fetchUpcomingItems();
   }, []);
 

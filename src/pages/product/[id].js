@@ -137,7 +137,7 @@ export default Product
 export async function getStaticPaths() {
   const allProductsSlugQuery = `
     query AllProductsPage {
-      allProducts(first: "60") {
+      allProducts(first: "70") {
         slug
       }
     }
@@ -154,7 +154,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const queryBySlug = `
     query ProductBySlug {
-      allProducts(filter: {slug: {eq: "${ params.id }"}}, first: "60") {
+      allProducts(filter: {slug: {eq: "${ params.id }"}}, first: "70") {
         availability
         description
         name

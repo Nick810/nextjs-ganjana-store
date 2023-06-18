@@ -32,7 +32,6 @@ export default function AllProducts({ data }) {
     }
 
     for (const item of allProducts) {
-      console.log(item)
       const { otherProps } = item;
       const product = () => ( 
         <li key={ shortid.generate() } className='cursor-pointer flex'>
@@ -45,7 +44,7 @@ export default function AllProducts({ data }) {
             </div>
             <div className='pt-3 pb-3'>
               <p className={ `text-sm ${item.availability ? 'text-success' : 'text-error'}` }>{ item.availability ? 'In Stock' : 'Out of stock' }</p>
-              { item.otherProps ? <p className='text-sm text-secondary-content font-normal'>{ item.otherProps.strainType } | THC: { item.otherProps.cannabiniod.thc }%</p> : null }
+              { item.otherProps ? <p className='text-sm text-secondary-content font-normal'>{ item.otherProps.strainType } {item.otherProps.cannabiniod.thc ? `| THC:${item.otherProps.cannabiniod.thc}%` : ''}</p> : null }
               <h3 className='text-md font-bold text-primary'>{ item.name }</h3>
             </div>
             {
