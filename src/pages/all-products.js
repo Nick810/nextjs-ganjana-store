@@ -32,6 +32,7 @@ export default function AllProducts({ data }) {
     }
 
     for (const item of allProducts) {
+      console.log(item)
       const { otherProps } = item;
       const product = () => ( 
         <li key={ shortid.generate() } className='cursor-pointer flex'>
@@ -93,7 +94,7 @@ export async function getStaticProps() {
       categories: allProducts {
         category
       }
-      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}, category: {matches: {pattern: "Flowers"}}}, first: "60", orderBy: _createdAt_DESC) {
+      allProducts(filter: {inCollection: {notMatches: {pattern: "New Drop"}}, category: {matches: {pattern: "Flowers|Seeds"}}}, first: "60", orderBy: _createdAt_DESC) {
         availability
         name
         image {

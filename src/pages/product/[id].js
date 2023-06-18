@@ -31,7 +31,7 @@ const Product = ({ data }) => {
         </div>
       <div style={{ padding: '0 5%' }}>
         <div className='mb-4'>
-          <p className='text-primary'>{ strainType } | THC:{ cannabiniod.thc }%</p>
+          <p className='text-primary'>{ strainType } {cannabiniod.thc ? `| THC:${cannabiniod.thc}%` : ''}</p>
         </div>
           <div>
             <h3 className='text-primary font-bold mb-2'>Cultivated by</h3>
@@ -63,7 +63,7 @@ const Product = ({ data }) => {
               </div>
             </> : null 
           }
-          { flavor.length || flavor ? 
+          { flavor.length ? 
             <>
               <div>
                 <div className='divider mt-1 mb-1'></div>
@@ -80,7 +80,7 @@ const Product = ({ data }) => {
               </div>
             </> : null 
           }
-          { feeling.length || feeling ? 
+          { feeling.length ? 
             <>
               <div>
                 <div className='divider mt-1 mb-1'></div>
